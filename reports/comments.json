@@ -363,5 +363,95 @@
    }
   ],
   "readout": "这条是八条里评论区最「干净」的一条：57 条评论几乎全正面，创作者还用置顶投票（P8L / M80H / 都行 / 都不选）主动收口，15 赞。有效信号是「讲人话」——最高赞 13 的那条是「终于有人把 Mini LED 讲得不像火箭科学」，比任何画质夸奖都直接。专业挑刺只有两条但值得记：M80H 暗部细节更多，「黑得下去但细节丢了有什么意义」；以及偏冷、红色过饱和的色彩倾向。另外两类留言暴露真实售前摩擦：三个不同的人反复问 P8L 和 C6K 怎么选，说明产品线命名在劝退；还有人问 P8L 是不是停产、65A400M 快速画面拖影——这是要产品端回答的问题，不是内容端。"
+ },
+ "techline": {
+  "scope": "最热门排序 · 主评论 74 条；其中约 30 条为模板化短评（Nice info / Great video mate 类），无信息量未计入情感分布，另 44 条参与归类",
+  "sentiment": {
+   "pos": 27,
+   "neu": 12,
+   "neg": 5
+  },
+  "topics": [
+   {
+    "name": "模板化短评（疑似低质互动）",
+    "count": 30,
+    "note": "账号多为「英文姓名+随机后缀」默认昵称；与后台 30 秒留存 21%、结尾 1.8% 明显矛盾"
+   },
+   {
+    "name": "暗场差异被看见",
+    "count": 5,
+    "note": "「P8L 背景更黑，三星发灰」——对比本身有效"
+   },
+   {
+    "name": "测试诉求（点菜）",
+    "count": 6,
+    "note": "要 OLED 对比、游戏测试、功耗、可视角、价格差、Hisense U7"
+   },
+   {
+    "name": "换机意向",
+    "count": 4,
+    "note": "「我要买 TCL」「三星这价不值」「用了三星多年想换」"
+   },
+   {
+    "name": "怀疑派",
+    "count": 3,
+    "note": "「坐沙发上根本看不出」「两台看着差不多」"
+   },
+   {
+    "name": "参数关注",
+    "count": 2,
+    "note": "144Hz 面板；有人把「72 分区 vs 1 区」理解错"
+   },
+   {
+    "name": "竞品软件吐槽",
+    "count": 1,
+    "note": "三星系统难用——非画质维度的真实不满"
+   }
+  ],
+  "quotes": [
+   {
+    "who": "@KinmasLucas",
+    "likes": 10,
+    "tag": "正",
+    "text": "The P8L keeps the background looking much darker around the bright objects, while the Samsung looks a bit washed out… would make me take TCL more seriously.",
+    "zh": "亮物周围的背景 P8L 明显更黑，三星发灰——这条是全场最有效的一条对比反馈。"
+   },
+   {
+    "who": "@Eric-d8e8j",
+    "likes": 8,
+    "tag": "正",
+    "text": "My main TV is an older TCL model and it’s been a workhorse… makes me wanna stay with the brand.",
+    "zh": "老 TCL 当主力机多年，看到新 Mini LED 后想继续留在品牌里——复购信号。"
+   },
+   {
+    "who": "@lll-f4y7l",
+    "likes": 7,
+    "tag": "正",
+    "text": "This is why I wanna see actual picture comparisons, not just numbers on a spec sheet.",
+    "zh": "要看真实画面对比，不要只看参数表——观众明确说出了这条内容的价值。"
+   },
+   {
+    "who": "@JosephBrown-q1g",
+    "likes": 5,
+    "tag": "正",
+    "text": "That grey haze around bright objects on the Samsung is hard to ignore once you see both screens together.",
+    "zh": "两台并排后，三星亮物周围的灰雾很难忽略。"
+   },
+   {
+    "who": "@NewTechVids7",
+    "likes": 0,
+    "tag": "负",
+    "text": "Not sure I’d notice these differences sitting on my couch.",
+    "zh": "坐自家沙发上大概看不出这些差别——说服力的边界。"
+   },
+   {
+    "who": "@supremest1",
+    "likes": 2,
+    "tag": "负",
+    "text": "Great title, next vid you should write \"not every animal is human\".",
+    "zh": "讽刺标题「不是所有 Mini LED 都一样」过于绝对。"
+   }
+  ],
+  "readout": "这条是八条里第一份「评论数据可疑」的证据：74 条评论中约 30 条是「Good stuff as usual / Nice info / Great video mate」这类模板化短评，账号名多为「英文姓名 + 随机后缀」的默认谷歌昵称；而这条的后台是 30 秒留存 21%、结尾只剩 1.8%——真有 74 人认真看完并评论，完播不会低到这个程度。做内容质量评分时这批必须剔除，否则「互动率高」会被误读成「内容好」。剔除后剩下的有效评论其实很硬：10 赞那条说暗场里 P8L 背景更黑、三星发灰；8 赞是老 TCL 用户表示要继续留在品牌里。真正该记的是怀疑派：「坐沙发上根本看不出这些差别」「两台看着差不多」——这条对比只对已经在做功课的人有效，对普通观众的说服力有限。"
  }
 }
