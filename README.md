@@ -1,6 +1,8 @@
 # TCL 欧洲 KOL · 爆款视频拆解工具（Video Teardown）
 
-把 GrowClaw 原型（`TechFlow × TCL P8L`）完整复刻成可自托管的静态站点：纯 HTML + CSS，零依赖、零构建，推到 GitHub 就能用 GitHub Pages 打开。
+把 GrowClaw 原型（`TechFlow × TCL P8L`）完整复刻成可自托管的静态站点：纯 HTML + CSS，零依赖、零构建，推到 GitHub 后用 Pages（branch 模式）直接打开。
+
+线上地址：https://jingtao-cui.github.io/tcl-kol-teardown/
 
 ## 这是什么
 
@@ -24,7 +26,6 @@ tcl-kol-teardown/
 ├── assets/
 │   ├── cover.svg           # 封面占位（换成 cover.jpg 即可）
 │   └── frames/*.svg        # 22 张抽帧占位，文件名 = 时间码
-├── .github/workflows/pages.yml  # 推 main 自动发布 GitHub Pages
 ├── LICENSE
 └── README.md
 ```
@@ -68,7 +69,9 @@ git remote add origin git@github.com:<你的账号>/tcl-kol-teardown.git
 git push -u origin main
 ```
 
-然后仓库 **Settings → Pages → Source 选 GitHub Actions**，`.github/workflows/pages.yml` 会在每次 push 后自动发布，地址形如 `https://<账号>.github.io/tcl-kol-teardown/`。
+然后仓库 **Settings → Pages → Build and deployment → Source 选「Deploy from a branch」**，Branch 选 `main`、目录选 `/ (root)`，Save。每次 push 到 main 后 30–60 秒自动重建，地址形如 `https://<账号>.github.io/tcl-kol-teardown/`。
+
+> 想改成 GitHub Actions 部署（可自定义构建步骤），需要 token 具备 `workflow` 权限；把 `pages.yml` 放回 `.github/workflows/` 即可，模板见本次交付的 `pages_workflow_keep/`。
 
 ## 口径与合规（页脚已内置，别删）
 
