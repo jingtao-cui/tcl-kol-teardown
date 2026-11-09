@@ -1,0 +1,170 @@
+{
+ "asbyt": {
+  "scope": "最热门排序 · 主评论 73 条（不含作者回复，含少量无关留言）",
+  "sentiment": {
+   "pos": 22,
+   "neu": 30,
+   "neg": 21
+  },
+  "topics": [
+   {
+    "name": "赞助 / 恰饭质疑",
+    "count": 8,
+    "note": "直指「TCL ad」「paid promotion」，并要求在视频内披露"
+   },
+   {
+    "name": "OLED 优越论",
+    "count": 9,
+    "note": "论点集中在「Mini LED 并不比 OLED 便宜」「光晕」「亮度刺眼」"
+   },
+   {
+    "name": "Hisense 对比纠结",
+    "count": 9,
+    "note": "已进入 shortlist 的买家，纠结 TCL vs Hisense，不是要不要 Mini LED"
+   },
+   {
+    "name": "技术点被理解",
+    "count": 5,
+    "note": "分区数量、光晕、高光不压暗部——教育目的达成"
+   },
+   {
+    "name": "已购用户反馈",
+    "count": 5,
+    "note": "QM8L / C8L / 98QM8L 持有者现身，夸亮度与黑位，吐槽低码率内容"
+   },
+   {
+    "name": "其他机型纠结",
+    "count": 4,
+    "note": "LG G6 / B6、Samsung S90H、Sony Bravia 9 II 之间的比价"
+   }
+  ],
+  "quotes": [
+   {
+    "who": "@DisplayNAudioTech",
+    "likes": 34,
+    "tag": "负",
+    "text": "Mate you’re an influencer not a reviewer. Compare RGB Mini LEDs with flagship OLEDs like the Samsung S95H/S99H or LG G6, not a C5… If this is sponsored content, disclose it.",
+    "zh": "「你是网红不是测评人」。要求用 S95H/G6 级别的旗舰 OLED 对比，而不是低亮度 C5；并主张赞助必须在视频里说清楚。"
+   },
+   {
+    "who": "@Eric-d8e8j",
+    "likes": 12,
+    "tag": "正",
+    "text": "Bro I always just looked at the Mini LED badge and moved on… now I’m checking for actual zones.",
+    "zh": "以前只看 Mini LED 标识就走，现在会去查实际分区数——这条视频把术语祛魅了。"
+   },
+   {
+    "who": "@RobVegas84",
+    "likes": 0,
+    "tag": "正",
+    "text": "I've had my 98\" QM7L Pro for over a month… the TCL SQD value proposition is impossible to argue against at this point.",
+    "zh": "25 年三星旗舰用户转向 TCL，认为 SQD 的性价比「已经无法反驳」。"
+   },
+   {
+    "who": "@UnsaltedCashew38",
+    "likes": 10,
+    "tag": "负",
+    "text": "Is this a TCL sponsored video? You didn't compare the TVs to any competitors.",
+    "zh": "质疑没有对比任何竞品，等于把品牌片当横评看。"
+   },
+   {
+    "who": "@HelplmAlive",
+    "likes": 0,
+    "tag": "中",
+    "text": "I would have bought a TCL but needed the inputs on the other side.",
+    "zh": "差一点下单，卡在接口位置——最具体的一条流失原因。"
+   }
+  ],
+  "readout": "这条视频做成了一件事：把「Mini LED 只是个标识」翻译成「分区数量决定光晕」，评论区最高赞的技术理解类留言（12 赞）证明教育目的达到了。但代价同样清楚——赞助质疑是第二大声音，8 条直指恰饭，其中 34 赞的技术批评（要求拿 S95H/G6 级旗舰 OLED 对比）传播力强过任何一条好评。最值钱的信号不是夸，而是 9 条主动提 Hisense 的留言：这些人已经在 shortlist 阶段，纠结的是 TCL 还是 Hisense，不是要不要 Mini LED。另有 5 位已购用户现身说法，夸亮度与黑位、吐槽低码率内容「twitchy」和接口位置——这是产品侧可以直接拿去用的反馈。"
+ },
+ "tecnonauta": {
+  "scope": "最热门排序 · 抓取到的主评论约 200 条（剔除抽奖刷屏与跑题 30 余条后归类 194 条）",
+  "sentiment": {
+   "pos": 78,
+   "neu": 64,
+   "neg": 52
+  },
+  "topics": [
+   {
+    "name": "已购用户主动晒机",
+    "count": 13,
+    "note": "C6K / C7L / QM6K Pro 为主，能报出自己电视的分区数（168 / 242 / 258 区）"
+   },
+   {
+    "name": "恰饭质疑",
+    "count": 12,
+    "note": "「me fumé 5 min de comercial」「huele a patrocinio」"
+   },
+   {
+    "name": "OLED 阵营反击",
+    "count": 10,
+    "note": "最高赞 74 的一条是「2017 年的 LG OLED 至今无烧屏」"
+   },
+   {
+    "name": "品牌可靠性质疑",
+    "count": 7,
+    "note": "公司 50 台 TCL 一年后剩 3-4 台；固件问题；暗场灰斑"
+   },
+   {
+    "name": "型号选择咨询",
+    "count": 8,
+    "note": "「C7L 值不值」「85 寸买哪个」「700–1000 美元预算」"
+   },
+   {
+    "name": "Hisense / 竞品比价",
+    "count": 6,
+    "note": "U6 / U7K 持有者现身，有夸有悔"
+   },
+   {
+    "name": "眼睛疲劳与闪烁",
+    "count": 4,
+    "note": "调到最低亮度仍刺眼、低亮度 PWM 闪烁"
+   }
+  ],
+  "quotes": [
+   {
+    "who": "@yeduki84",
+    "likes": 74,
+    "tag": "负",
+    "text": "tengo una TV OLED LG desde 2017… ahí sigue perfecta sin quemados. Yo OLED sí o sí.",
+    "zh": "2017 年的 LG OLED 用到现在没烧屏，客厅很亮也看得清——最高赞是反方。"
+   },
+   {
+    "who": "@Podatix",
+    "likes": 1,
+    "tag": "负",
+    "text": "8:23 estaba siendo muy interesante hasta que mencionaron que TCL patrocina el vídeo… donde trabajo compraron como 50 TCL, hoy quedan tres o cuatro funcionando.",
+    "zh": "「讲到 8:23 都很有意思，一说是 TCL 赞助就变味」；并称公司买了 50 台 TCL，如今只剩三四台能用。"
+   },
+   {
+    "who": "@CharliMG17",
+    "likes": 14,
+    "tag": "正",
+    "text": "Hace unos 3 meses compré un TCL C6K de 55 y es espectacular… al principio no me convencía tanto la marca pero es muy buena.",
+    "zh": "三个月前买了 55 寸 C6K，本来对品牌没信心，现在认为画质和音质都惊艳。"
+   },
+   {
+    "who": "@Chato80",
+    "likes": 11,
+    "tag": "中",
+    "text": "¿Por qué no mencionaron la demanda de TCL a Samsung por vender televisores mini led que no lo son?",
+    "zh": "追问为什么没提 TCL 起诉三星「假 Mini LED」——观众把法务话题当成内容缺口。"
+   },
+   {
+    "who": "@glowst_",
+    "likes": 0,
+    "tag": "中",
+    "text": "Se nota muchísimo que los guiones y ejemplos están hechos con IA… siento que pierden un poco de identidad.",
+    "zh": "脚本和例子明显是 AI 写的，丢了频道自己的味道——罕见的元评论，针对内容而非产品。"
+   },
+   {
+    "who": "@crisZzz0321",
+    "likes": 1,
+    "tag": "正",
+    "text": "No sabía que no todos los Mini LED eran iguales… ahora ya lo tengo claro, me voy a por una TCL.",
+    "zh": "不知道 Mini LED 还分真假，现在清楚了，准备买 TCL。"
+   }
+  ],
+  "readout": "西语受众对 TCL 的接受度明显高于英语受众：13 位已购用户主动晒机型（C6K 系列为主），而且能报出自己电视的分区数（168 / 242 / 258 区）——「分区」已经变成他们衡量一台电视的通用语言，这是教育型内容最硬的产出。反方同样硬：最高赞 74 的一条不是夸 TCL，而是「2017 年的 LG OLED 至今没烧屏」，OLED 阵营用耐用性反击；第二条负面主线是品牌可靠性，一位观众说公司买了 50 台 TCL、一年后只剩三四台，这种具体场景比「恰饭」更难反驳。还有一条罕见的元评论：脚本被指像 AI 生成、丢了频道个性，这是内容侧的提醒，不是产品侧。另有一条追问「为什么没提 TCL 起诉三星假 Mini LED」——法务话题是双刃剑，观众会拿它当内容缺口来问。"
+ }
+}

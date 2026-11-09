@@ -164,7 +164,35 @@ def conclusion(p, b):
     return out
 
 
-def page(slug, p, b, points):
+
+def render_comments(c):
+    """评论区：情感分布 + 关注点 + 代表原话 + 侧写。无数据走占位。"""
+    if not c:
+        return ('<div class="pend">评论正文待接入：需要该条评论区截图（最相关前 10 条 + 至少 3 条负面），'
+                '或直接粘贴评论文本。<br>数量已在表内，但正文不在数据表里，不臆测情绪占比。</div>')
+    n = sum(c["sentiment"].values()) or 1
+    pos, neu, neg = c["sentiment"]["pos"], c["sentiment"]["neu"], c["sentiment"]["neg"]
+    bars = ""
+    for label, val, color in (("正面 / 被说服", pos, "#12b76a"), ("中性 / 比较与提问", neu, "#98a2b3"), ("负面 / 反调", neg, "#e60012")):
+        bars += (f'<div class="bar-row"><span class="bar-label">{label}</span>'
+                 f'<div class="bar-track"><div class="bar-fill" style="width:{val/n*100:.1f}%;background:{color}"></div></div>'
+                 f'<span class="bar-val">{val} · {val/n*100:.0f}%</span></div>')
+    topics = "".join(
+        f'<div class="topic"><b>{t["count"]}</b><div><span>{t["name"]}</span><small>{t["note"]}</small></div></div>'
+        for t in c["topics"])
+    quotes = "".join(
+        f'<blockquote class="quote {("neg" if q["tag"]=="负" else "")}">'
+        f'<p>{q["text"]}</p><p class="qzh">{q["zh"]}</p>'
+        f'<footer>{q["who"]}{(" · " + str(q["likes"]) + " 赞") if q.get("likes") else ""} · {q["tag"]}</footer></blockquote>'
+        for q in c["quotes"])
+    return (f'<p class="note">口径：{c["scope"]}。热门排序会放大争议，全量分布需导出全部评论后重算。</p>'
+            f'<div class="card pad"><h3 class="mini">情感分布</h3>{bars}</div>'
+            f'<div class="card pad" style="margin-top:14px"><h3 class="mini">观众在聊什么</h3><div class="topics">{topics}</div></div>'
+            f'<div class="quotes">{quotes}</div>'
+            f'<div class="readout"><h3 class="mini">评论区侧写</h3><p>{c["readout"]}</p></div>')
+
+
+def page(slug, p, b, points, c=None):
     er = pct(p["er"])
     ret30 = pct(b.get("ret"))
     fin = pct(b.get("avg"))
@@ -197,6 +225,44 @@ def page(slug, p, b, points):
 .kv{{display:grid;grid-template-columns:150px 1fr;gap:8px 18px;font-size:13px}}
 .kv dt{{color:#667085;font-size:12px}}.kv dd{{margin:0;color:#101828}}
 .fact b{{display:block;margin-top:2px}}
+.sbar{{display:flex;height:34px;border-radius:8px;overflow:hidden;font-size:11.5px;color:#fff}}
+.seg{{display:flex;align-items:center;justify-content:center;white-space:nowrap}}
+.seg.pos{{background:#12b76a}}.seg.neu{{background:#98a2b3}}.seg.neg{{background:#e60012}}
+.topics{{list-style:none;padding:0;margin:18px 0 0;display:grid;grid-template-columns:1fr 1fr;gap:10px}}
+.topics li{{border:1px solid var(--line);border-radius:10px;padding:12px 14px;display:grid;grid-template-columns:1fr auto;gap:4px 10px}}
+.topics b{{font-size:13px;color:#101828}}.topics em{{font-style:normal;color:#e60012;font-weight:700;font-size:13px}}
+.topics small{{grid-column:1/-1;color:#667085;font-size:11.5px;line-height:1.5}}
+.quotes{{display:grid;gap:10px;margin-top:16px}}
+.quote{{border:1px solid var(--line);border-left:3px solid #98a2b3;border-radius:10px;padding:12px 14px;background:#fff}}
+.quote.正{{border-left-color:#12b76a}}.quote.负{{border-left-color:#e60012}}
+.qhead{{display:flex;align-items:center;gap:10px;font-size:12px;color:#667085;margin-bottom:6px}}
+.qhead b{{color:#101828}}.likes{{margin-left:auto}}
+.tag{{padding:1px 6px;border-radius:4px;font-size:10.5px;background:#f2f4f7;color:#475467}}
+.tag.t正{{background:#e6f7ee;color:#0b7a4b}}.tag.t负{{background:#fdecec;color:#c00}}.tag.t中{{background:#f2f4f7}}
+.quote p{{margin:0;font-size:12.5px;line-height:1.6}}
+.quote .en{{color:#344054}}.quote .zh{{color:#667085;margin-top:4px;font-size:12px}}
+.readout{{margin-top:16px;border:1px solid var(--line);border-radius:12px;padding:16px 18px;background:#fffbfb}}
+.readout b{{color:#e60012;font-size:12px;letter-spacing:.06em}}
+.readout p{{margin:8px 0 0;font-size:13px;line-height:1.75;color:#344054}}
+h3.mini{{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#667085;font-weight:600;margin:0 0 12px}}
+.bar-row{{display:grid;grid-template-columns:110px 1fr 92px;align-items:center;gap:12px;margin:8px 0}}
+.bar-label{{font-size:12px;color:#344054}}
+.bar-track{{height:8px;background:#f2f4f7;border-radius:6px;overflow:hidden}}
+.bar-fill{{height:8px;border-radius:6px}}
+.bar-val{{font-size:11.5px;color:#667085;font-family:ui-monospace,monospace;text-align:right}}
+.topics{{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:10px}}
+.topic{{display:flex;gap:10px;align-items:flex-start;background:#fcfcfd;border:1px solid var(--line);border-radius:10px;padding:10px 12px}}
+.topic b{{font-family:ui-monospace,monospace;color:#e60012;font-size:16px;line-height:1.2}}
+.topic span{{font-size:12.5px;color:#101828;font-weight:600}}
+.topic small{{display:block;font-size:11.5px;color:#667085;margin-top:3px;line-height:1.5}}
+.quotes{{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:12px;margin-top:16px;align-items:start}}
+.quote{{margin:0;border:1px solid var(--line);border-left:3px solid #12b76a;border-radius:8px;padding:12px 14px;background:#fff}}
+.quote.neg{{border-left-color:#e60012}}
+.quote p{{font-size:12.5px;line-height:1.65;color:#344054;margin:0 0 6px}}
+.quote .qzh{{color:#101828;font-size:12.5px}}
+.quote footer{{font-size:11px;color:#98a2b3;font-family:ui-monospace,monospace}}
+.readout{{margin-top:16px;border:1px solid #fecdca;background:#fffbfa;border-radius:12px;padding:16px 18px}}
+.readout p{{margin:0;font-size:13px;line-height:1.8;color:#101828}}
 .pend{{border:1px dashed #d0d5dd;border-radius:12px;padding:22px;text-align:center;color:#98a2b3;font-size:12.5px;background:#fcfcfd}}
 </style></head><body>
 <div class="topbar"><div class="wrap">
@@ -249,7 +315,7 @@ def page(slug, p, b, points):
 
   <section id="comments">
     <div class="sec-head"><span class="sec-no">04</span><h2>评论区</h2><span class="hint">公开评论 {p['cmts']:,} 条</span></div>
-    <div class="pend">评论正文待接入：需要该条评论区截图（最相关前 10 条 + 至少 3 条负面），或直接粘贴评论文本。<br>数量已在表内（{p['cmts']:,} 条），但正文不在数据表里，不臆测情绪占比。</div>
+    {render_comments(c)}
   </section>
 
   <section id="dims">
@@ -277,11 +343,15 @@ def main():
         pairs.append((k, p, b))
 
     OUT.mkdir(exist_ok=True)
+    cpath = OUT / "comments.json"
+    cm = json.loads(cpath.read_text(encoding="utf-8")) if cpath.exists() else {}
+    cpath = OUT / "comments.json"
+    comments = json.loads(cpath.read_text(encoding="utf-8")) if cpath.exists() else {}
     manifest = []
     for k, p, b in pairs:
         slug = k
         points = hist.get(p["vid"], [])
-        (OUT / f"{slug}.html").write_text(page(slug, p, b, points), encoding="utf-8")
+        (OUT / f"{slug}.html").write_text(page(slug, p, b, points, comments.get(slug)), encoding="utf-8")
         prj = "head" if p["campaign"] == "MiniLED Education" else "mid"
         title = str(b.get("title") or p["kol"]).strip().replace("\n", "")
         manifest.append({

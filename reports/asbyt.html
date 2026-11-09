@@ -10,6 +10,44 @@
 .kv{display:grid;grid-template-columns:150px 1fr;gap:8px 18px;font-size:13px}
 .kv dt{color:#667085;font-size:12px}.kv dd{margin:0;color:#101828}
 .fact b{display:block;margin-top:2px}
+.sbar{display:flex;height:34px;border-radius:8px;overflow:hidden;font-size:11.5px;color:#fff}
+.seg{display:flex;align-items:center;justify-content:center;white-space:nowrap}
+.seg.pos{background:#12b76a}.seg.neu{background:#98a2b3}.seg.neg{background:#e60012}
+.topics{list-style:none;padding:0;margin:18px 0 0;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.topics li{border:1px solid var(--line);border-radius:10px;padding:12px 14px;display:grid;grid-template-columns:1fr auto;gap:4px 10px}
+.topics b{font-size:13px;color:#101828}.topics em{font-style:normal;color:#e60012;font-weight:700;font-size:13px}
+.topics small{grid-column:1/-1;color:#667085;font-size:11.5px;line-height:1.5}
+.quotes{display:grid;gap:10px;margin-top:16px}
+.quote{border:1px solid var(--line);border-left:3px solid #98a2b3;border-radius:10px;padding:12px 14px;background:#fff}
+.quote.正{border-left-color:#12b76a}.quote.负{border-left-color:#e60012}
+.qhead{display:flex;align-items:center;gap:10px;font-size:12px;color:#667085;margin-bottom:6px}
+.qhead b{color:#101828}.likes{margin-left:auto}
+.tag{padding:1px 6px;border-radius:4px;font-size:10.5px;background:#f2f4f7;color:#475467}
+.tag.t正{background:#e6f7ee;color:#0b7a4b}.tag.t负{background:#fdecec;color:#c00}.tag.t中{background:#f2f4f7}
+.quote p{margin:0;font-size:12.5px;line-height:1.6}
+.quote .en{color:#344054}.quote .zh{color:#667085;margin-top:4px;font-size:12px}
+.readout{margin-top:16px;border:1px solid var(--line);border-radius:12px;padding:16px 18px;background:#fffbfb}
+.readout b{color:#e60012;font-size:12px;letter-spacing:.06em}
+.readout p{margin:8px 0 0;font-size:13px;line-height:1.75;color:#344054}
+h3.mini{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#667085;font-weight:600;margin:0 0 12px}
+.bar-row{display:grid;grid-template-columns:110px 1fr 92px;align-items:center;gap:12px;margin:8px 0}
+.bar-label{font-size:12px;color:#344054}
+.bar-track{height:8px;background:#f2f4f7;border-radius:6px;overflow:hidden}
+.bar-fill{height:8px;border-radius:6px}
+.bar-val{font-size:11.5px;color:#667085;font-family:ui-monospace,monospace;text-align:right}
+.topics{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:10px}
+.topic{display:flex;gap:10px;align-items:flex-start;background:#fcfcfd;border:1px solid var(--line);border-radius:10px;padding:10px 12px}
+.topic b{font-family:ui-monospace,monospace;color:#e60012;font-size:16px;line-height:1.2}
+.topic span{font-size:12.5px;color:#101828;font-weight:600}
+.topic small{display:block;font-size:11.5px;color:#667085;margin-top:3px;line-height:1.5}
+.quotes{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:12px;margin-top:16px;align-items:start}
+.quote{margin:0;border:1px solid var(--line);border-left:3px solid #12b76a;border-radius:8px;padding:12px 14px;background:#fff}
+.quote.neg{border-left-color:#e60012}
+.quote p{font-size:12.5px;line-height:1.65;color:#344054;margin:0 0 6px}
+.quote .qzh{color:#101828;font-size:12.5px}
+.quote footer{font-size:11px;color:#98a2b3;font-family:ui-monospace,monospace}
+.readout{margin-top:16px;border:1px solid #fecdca;background:#fffbfa;border-radius:12px;padding:16px 18px}
+.readout p{margin:0;font-size:13px;line-height:1.8;color:#101828}
 .pend{border:1px dashed #d0d5dd;border-radius:12px;padding:22px;text-align:center;color:#98a2b3;font-size:12.5px;background:#fcfcfd}
 </style></head><body>
 <div class="topbar"><div class="wrap">
@@ -62,7 +100,7 @@
 
   <section id="comments">
     <div class="sec-head"><span class="sec-no">04</span><h2>评论区</h2><span class="hint">公开评论 147 条</span></div>
-    <div class="pend">评论正文待接入：需要该条评论区截图（最相关前 10 条 + 至少 3 条负面），或直接粘贴评论文本。<br>数量已在表内（147 条），但正文不在数据表里，不臆测情绪占比。</div>
+    <p class="note">口径：最热门排序 · 主评论 73 条（不含作者回复，含少量无关留言）。热门排序会放大争议，全量分布需导出全部评论后重算。</p><div class="card pad"><h3 class="mini">情感分布</h3><div class="bar-row"><span class="bar-label">正面 / 被说服</span><div class="bar-track"><div class="bar-fill" style="width:30.1%;background:#12b76a"></div></div><span class="bar-val">22 · 30%</span></div><div class="bar-row"><span class="bar-label">中性 / 比较与提问</span><div class="bar-track"><div class="bar-fill" style="width:41.1%;background:#98a2b3"></div></div><span class="bar-val">30 · 41%</span></div><div class="bar-row"><span class="bar-label">负面 / 反调</span><div class="bar-track"><div class="bar-fill" style="width:28.8%;background:#e60012"></div></div><span class="bar-val">21 · 29%</span></div></div><div class="card pad" style="margin-top:14px"><h3 class="mini">观众在聊什么</h3><div class="topics"><div class="topic"><b>8</b><div><span>赞助 / 恰饭质疑</span><small>直指「TCL ad」「paid promotion」，并要求在视频内披露</small></div></div><div class="topic"><b>9</b><div><span>OLED 优越论</span><small>论点集中在「Mini LED 并不比 OLED 便宜」「光晕」「亮度刺眼」</small></div></div><div class="topic"><b>9</b><div><span>Hisense 对比纠结</span><small>已进入 shortlist 的买家，纠结 TCL vs Hisense，不是要不要 Mini LED</small></div></div><div class="topic"><b>5</b><div><span>技术点被理解</span><small>分区数量、光晕、高光不压暗部——教育目的达成</small></div></div><div class="topic"><b>5</b><div><span>已购用户反馈</span><small>QM8L / C8L / 98QM8L 持有者现身，夸亮度与黑位，吐槽低码率内容</small></div></div><div class="topic"><b>4</b><div><span>其他机型纠结</span><small>LG G6 / B6、Samsung S90H、Sony Bravia 9 II 之间的比价</small></div></div></div></div><div class="quotes"><blockquote class="quote neg"><p>Mate you’re an influencer not a reviewer. Compare RGB Mini LEDs with flagship OLEDs like the Samsung S95H/S99H or LG G6, not a C5… If this is sponsored content, disclose it.</p><p class="qzh">「你是网红不是测评人」。要求用 S95H/G6 级别的旗舰 OLED 对比，而不是低亮度 C5；并主张赞助必须在视频里说清楚。</p><footer>@DisplayNAudioTech · 34 赞 · 负</footer></blockquote><blockquote class="quote "><p>Bro I always just looked at the Mini LED badge and moved on… now I’m checking for actual zones.</p><p class="qzh">以前只看 Mini LED 标识就走，现在会去查实际分区数——这条视频把术语祛魅了。</p><footer>@Eric-d8e8j · 12 赞 · 正</footer></blockquote><blockquote class="quote "><p>I've had my 98" QM7L Pro for over a month… the TCL SQD value proposition is impossible to argue against at this point.</p><p class="qzh">25 年三星旗舰用户转向 TCL，认为 SQD 的性价比「已经无法反驳」。</p><footer>@RobVegas84 · 正</footer></blockquote><blockquote class="quote neg"><p>Is this a TCL sponsored video? You didn't compare the TVs to any competitors.</p><p class="qzh">质疑没有对比任何竞品，等于把品牌片当横评看。</p><footer>@UnsaltedCashew38 · 10 赞 · 负</footer></blockquote><blockquote class="quote "><p>I would have bought a TCL but needed the inputs on the other side.</p><p class="qzh">差一点下单，卡在接口位置——最具体的一条流失原因。</p><footer>@HelplmAlive · 中</footer></blockquote></div><div class="readout"><h3 class="mini">评论区侧写</h3><p>这条视频做成了一件事：把「Mini LED 只是个标识」翻译成「分区数量决定光晕」，评论区最高赞的技术理解类留言（12 赞）证明教育目的达到了。但代价同样清楚——赞助质疑是第二大声音，8 条直指恰饭，其中 34 赞的技术批评（要求拿 S95H/G6 级旗舰 OLED 对比）传播力强过任何一条好评。最值钱的信号不是夸，而是 9 条主动提 Hisense 的留言：这些人已经在 shortlist 阶段，纠结的是 TCL 还是 Hisense，不是要不要 Mini LED。另有 5 位已购用户现身说法，夸亮度与黑位、吐槽低码率内容「twitchy」和接口位置——这是产品侧可以直接拿去用的反馈。</p></div>
   </section>
 
   <section id="dims">

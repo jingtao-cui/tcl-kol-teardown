@@ -10,6 +10,44 @@
 .kv{display:grid;grid-template-columns:150px 1fr;gap:8px 18px;font-size:13px}
 .kv dt{color:#667085;font-size:12px}.kv dd{margin:0;color:#101828}
 .fact b{display:block;margin-top:2px}
+.sbar{display:flex;height:34px;border-radius:8px;overflow:hidden;font-size:11.5px;color:#fff}
+.seg{display:flex;align-items:center;justify-content:center;white-space:nowrap}
+.seg.pos{background:#12b76a}.seg.neu{background:#98a2b3}.seg.neg{background:#e60012}
+.topics{list-style:none;padding:0;margin:18px 0 0;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.topics li{border:1px solid var(--line);border-radius:10px;padding:12px 14px;display:grid;grid-template-columns:1fr auto;gap:4px 10px}
+.topics b{font-size:13px;color:#101828}.topics em{font-style:normal;color:#e60012;font-weight:700;font-size:13px}
+.topics small{grid-column:1/-1;color:#667085;font-size:11.5px;line-height:1.5}
+.quotes{display:grid;gap:10px;margin-top:16px}
+.quote{border:1px solid var(--line);border-left:3px solid #98a2b3;border-radius:10px;padding:12px 14px;background:#fff}
+.quote.正{border-left-color:#12b76a}.quote.负{border-left-color:#e60012}
+.qhead{display:flex;align-items:center;gap:10px;font-size:12px;color:#667085;margin-bottom:6px}
+.qhead b{color:#101828}.likes{margin-left:auto}
+.tag{padding:1px 6px;border-radius:4px;font-size:10.5px;background:#f2f4f7;color:#475467}
+.tag.t正{background:#e6f7ee;color:#0b7a4b}.tag.t负{background:#fdecec;color:#c00}.tag.t中{background:#f2f4f7}
+.quote p{margin:0;font-size:12.5px;line-height:1.6}
+.quote .en{color:#344054}.quote .zh{color:#667085;margin-top:4px;font-size:12px}
+.readout{margin-top:16px;border:1px solid var(--line);border-radius:12px;padding:16px 18px;background:#fffbfb}
+.readout b{color:#e60012;font-size:12px;letter-spacing:.06em}
+.readout p{margin:8px 0 0;font-size:13px;line-height:1.75;color:#344054}
+h3.mini{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#667085;font-weight:600;margin:0 0 12px}
+.bar-row{display:grid;grid-template-columns:110px 1fr 92px;align-items:center;gap:12px;margin:8px 0}
+.bar-label{font-size:12px;color:#344054}
+.bar-track{height:8px;background:#f2f4f7;border-radius:6px;overflow:hidden}
+.bar-fill{height:8px;border-radius:6px}
+.bar-val{font-size:11.5px;color:#667085;font-family:ui-monospace,monospace;text-align:right}
+.topics{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:10px}
+.topic{display:flex;gap:10px;align-items:flex-start;background:#fcfcfd;border:1px solid var(--line);border-radius:10px;padding:10px 12px}
+.topic b{font-family:ui-monospace,monospace;color:#e60012;font-size:16px;line-height:1.2}
+.topic span{font-size:12.5px;color:#101828;font-weight:600}
+.topic small{display:block;font-size:11.5px;color:#667085;margin-top:3px;line-height:1.5}
+.quotes{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:12px;margin-top:16px;align-items:start}
+.quote{margin:0;border:1px solid var(--line);border-left:3px solid #12b76a;border-radius:8px;padding:12px 14px;background:#fff}
+.quote.neg{border-left-color:#e60012}
+.quote p{font-size:12.5px;line-height:1.65;color:#344054;margin:0 0 6px}
+.quote .qzh{color:#101828;font-size:12.5px}
+.quote footer{font-size:11px;color:#98a2b3;font-family:ui-monospace,monospace}
+.readout{margin-top:16px;border:1px solid #fecdca;background:#fffbfa;border-radius:12px;padding:16px 18px}
+.readout p{margin:0;font-size:13px;line-height:1.8;color:#101828}
 .pend{border:1px dashed #d0d5dd;border-radius:12px;padding:22px;text-align:center;color:#98a2b3;font-size:12.5px;background:#fcfcfd}
 </style></head><body>
 <div class="topbar"><div class="wrap">
@@ -62,7 +100,7 @@
 
   <section id="comments">
     <div class="sec-head"><span class="sec-no">04</span><h2>评论区</h2><span class="hint">公开评论 311 条</span></div>
-    <div class="pend">评论正文待接入：需要该条评论区截图（最相关前 10 条 + 至少 3 条负面），或直接粘贴评论文本。<br>数量已在表内（311 条），但正文不在数据表里，不臆测情绪占比。</div>
+    <p class="note">口径：最热门排序 · 抓取到的主评论约 200 条（剔除抽奖刷屏与跑题 30 余条后归类 194 条）。热门排序会放大争议，全量分布需导出全部评论后重算。</p><div class="card pad"><h3 class="mini">情感分布</h3><div class="bar-row"><span class="bar-label">正面 / 被说服</span><div class="bar-track"><div class="bar-fill" style="width:40.2%;background:#12b76a"></div></div><span class="bar-val">78 · 40%</span></div><div class="bar-row"><span class="bar-label">中性 / 比较与提问</span><div class="bar-track"><div class="bar-fill" style="width:33.0%;background:#98a2b3"></div></div><span class="bar-val">64 · 33%</span></div><div class="bar-row"><span class="bar-label">负面 / 反调</span><div class="bar-track"><div class="bar-fill" style="width:26.8%;background:#e60012"></div></div><span class="bar-val">52 · 27%</span></div></div><div class="card pad" style="margin-top:14px"><h3 class="mini">观众在聊什么</h3><div class="topics"><div class="topic"><b>13</b><div><span>已购用户主动晒机</span><small>C6K / C7L / QM6K Pro 为主，能报出自己电视的分区数（168 / 242 / 258 区）</small></div></div><div class="topic"><b>12</b><div><span>恰饭质疑</span><small>「me fumé 5 min de comercial」「huele a patrocinio」</small></div></div><div class="topic"><b>10</b><div><span>OLED 阵营反击</span><small>最高赞 74 的一条是「2017 年的 LG OLED 至今无烧屏」</small></div></div><div class="topic"><b>7</b><div><span>品牌可靠性质疑</span><small>公司 50 台 TCL 一年后剩 3-4 台；固件问题；暗场灰斑</small></div></div><div class="topic"><b>8</b><div><span>型号选择咨询</span><small>「C7L 值不值」「85 寸买哪个」「700–1000 美元预算」</small></div></div><div class="topic"><b>6</b><div><span>Hisense / 竞品比价</span><small>U6 / U7K 持有者现身，有夸有悔</small></div></div><div class="topic"><b>4</b><div><span>眼睛疲劳与闪烁</span><small>调到最低亮度仍刺眼、低亮度 PWM 闪烁</small></div></div></div></div><div class="quotes"><blockquote class="quote neg"><p>tengo una TV OLED LG desde 2017… ahí sigue perfecta sin quemados. Yo OLED sí o sí.</p><p class="qzh">2017 年的 LG OLED 用到现在没烧屏，客厅很亮也看得清——最高赞是反方。</p><footer>@yeduki84 · 74 赞 · 负</footer></blockquote><blockquote class="quote neg"><p>8:23 estaba siendo muy interesante hasta que mencionaron que TCL patrocina el vídeo… donde trabajo compraron como 50 TCL, hoy quedan tres o cuatro funcionando.</p><p class="qzh">「讲到 8:23 都很有意思，一说是 TCL 赞助就变味」；并称公司买了 50 台 TCL，如今只剩三四台能用。</p><footer>@Podatix · 1 赞 · 负</footer></blockquote><blockquote class="quote "><p>Hace unos 3 meses compré un TCL C6K de 55 y es espectacular… al principio no me convencía tanto la marca pero es muy buena.</p><p class="qzh">三个月前买了 55 寸 C6K，本来对品牌没信心，现在认为画质和音质都惊艳。</p><footer>@CharliMG17 · 14 赞 · 正</footer></blockquote><blockquote class="quote "><p>¿Por qué no mencionaron la demanda de TCL a Samsung por vender televisores mini led que no lo son?</p><p class="qzh">追问为什么没提 TCL 起诉三星「假 Mini LED」——观众把法务话题当成内容缺口。</p><footer>@Chato80 · 11 赞 · 中</footer></blockquote><blockquote class="quote "><p>Se nota muchísimo que los guiones y ejemplos están hechos con IA… siento que pierden un poco de identidad.</p><p class="qzh">脚本和例子明显是 AI 写的，丢了频道自己的味道——罕见的元评论，针对内容而非产品。</p><footer>@glowst_ · 中</footer></blockquote><blockquote class="quote "><p>No sabía que no todos los Mini LED eran iguales… ahora ya lo tengo claro, me voy a por una TCL.</p><p class="qzh">不知道 Mini LED 还分真假，现在清楚了，准备买 TCL。</p><footer>@crisZzz0321 · 1 赞 · 正</footer></blockquote></div><div class="readout"><h3 class="mini">评论区侧写</h3><p>西语受众对 TCL 的接受度明显高于英语受众：13 位已购用户主动晒机型（C6K 系列为主），而且能报出自己电视的分区数（168 / 242 / 258 区）——「分区」已经变成他们衡量一台电视的通用语言，这是教育型内容最硬的产出。反方同样硬：最高赞 74 的一条不是夸 TCL，而是「2017 年的 LG OLED 至今没烧屏」，OLED 阵营用耐用性反击；第二条负面主线是品牌可靠性，一位观众说公司买了 50 台 TCL、一年后只剩三四台，这种具体场景比「恰饭」更难反驳。还有一条罕见的元评论：脚本被指像 AI 生成、丢了频道个性，这是内容侧的提醒，不是产品侧。另有一条追问「为什么没提 TCL 起诉三星假 Mini LED」——法务话题是双刃剑，观众会拿它当内容缺口来问。</p></div>
   </section>
 
   <section id="dims">
