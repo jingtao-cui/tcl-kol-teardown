@@ -166,5 +166,107 @@
    }
   ],
   "readout": "西语受众对 TCL 的接受度明显高于英语受众：13 位已购用户主动晒机型（C6K 系列为主），而且能报出自己电视的分区数（168 / 242 / 258 区）——「分区」已经变成他们衡量一台电视的通用语言，这是教育型内容最硬的产出。反方同样硬：最高赞 74 的一条不是夸 TCL，而是「2017 年的 LG OLED 至今没烧屏」，OLED 阵营用耐用性反击；第二条负面主线是品牌可靠性，一位观众说公司买了 50 台 TCL、一年后只剩三四台，这种具体场景比「恰饭」更难反驳。还有一条罕见的元评论：脚本被指像 AI 生成、丢了频道个性，这是内容侧的提醒，不是产品侧。另有一条追问「为什么没提 TCL 起诉三星假 Mini LED」——法务话题是双刃剑，观众会拿它当内容缺口来问。"
+ },
+ "techflow": {
+  "scope": "最热门排序 · 主评论 72 条（不含作者回复与置顶）",
+  "sentiment": {
+   "pos": 18,
+   "neu": 37,
+   "neg": 17
+  },
+  "topics": [
+   {
+    "name": "学到新变量",
+    "count": 7,
+    "note": "「分区布局与背光控制比分区数更重要」——三条最高赞全是「我以前不知道」型"
+   },
+   {
+    "name": "OLED / QD-OLED 守门",
+    "count": 6,
+    "note": "论点仍是「LG G5/G6 能到 2500 nits 且真黑位」"
+   },
+   {
+    "name": "对比公平性与恰饭",
+    "count": 6,
+    "note": "9 赞那条直接说「这就是 TCL 广告」；同一批评者跨 campaign 复现"
+   },
+   {
+    "name": "品牌转换意向",
+    "count": 5,
+    "note": "两位自称 25 年三星用户转向 TCL；店里对比后倾向 P8L"
+   },
+   {
+    "name": "零售商 / 售前信任",
+    "count": 4,
+    "note": "Currys 差评拿到 13 赞；「店员被问就一脸茫然」"
+   },
+   {
+    "name": "术语门槛",
+    "count": 3,
+    "note": "还在问「QLED 是什么」「mini LED 和 micro LED 差在哪」"
+   },
+   {
+    "name": "看不出差别",
+    "count": 3,
+    "note": "「两台我看不出区别」「99% 的人根本不在意」——说服力天花板"
+   },
+   {
+    "name": "旧机仍好用",
+    "count": 4,
+    "note": "TCL 用了 4 年不死、2000 年代索尼、先锋等离子"
+   }
+  ],
+  "quotes": [
+   {
+    "who": "@Xena-q1h",
+    "likes": 12,
+    "tag": "正",
+    "text": "this is the kind of comparison that makes you rethink your whole living room setup… dark movie scenes, city lights at night are exactly where I'd want to see contrast and blooming.",
+    "zh": "看完会重新审视自己客厅的观影条件——观众开始用「暗场 + 城市夜景」来检验电视，而不是看参数表。"
+   },
+   {
+    "who": "@JosephBrown-q1g",
+    "likes": 8,
+    "tag": "正",
+    "text": "Never really occurred to me that led layout and light control matter just as much as the led count itself. Something I literally never looked for when tv shopping before.",
+    "zh": "从没想过背光布局和控光跟分区数量一样重要——买电视时根本没查过这个。"
+   },
+   {
+    "who": "@rectoverso7988",
+    "likes": 9,
+    "tag": "负",
+    "text": "This is just an advertisement for TCL! An LG G5 or G6 can reach 2,500 nits and delivers true, perfect blacks.",
+    "zh": "「这就是 TCL 广告」：LG G5/G6 能到 2500 nits 且黑位完美，没什么可比的。"
+   },
+   {
+    "who": "@davidwhite5721",
+    "likes": 13,
+    "tag": "负",
+    "text": "There's absolutely no way I'm buying a tv from curry's.",
+    "zh": "渠道信任问题：绝对不在 Currys 买电视——13 赞，比任何产品观点都高。"
+   },
+   {
+    "who": "@jamotto1569",
+    "likes": 0,
+    "tag": "负",
+    "text": "Don't see any difference between these two TVs.",
+    "zh": "两台看不出区别——这条是最该警惕的：对比没说服非功课型观众。"
+   },
+   {
+    "who": "@RobVegas84",
+    "likes": 3,
+    "tag": "正",
+    "text": "I just ditched a 25 year relationship with top tier Samsungs for a 98\" SQD LED from TCL.",
+    "zh": "结束与三星 25 年的关系，换 98 寸 TCL SQD——品牌转换的具体案例。"
+   },
+   {
+    "who": "@DisplayNAudioTech",
+    "likes": 3,
+    "tag": "负",
+    "text": "You're presenting yourself as a TV reviewer, yet your coverage comes across more like influencer marketing for TCL… I would rather buy a BMW than a BYD.",
+    "zh": "与 ASBYT 同一条视频下拿 34 赞的是同一账号：给他贴「网红营销」标签，用 BMW vs BYD 比喻中国品牌。"
+   }
+  ],
+  "readout": "这条的核心产出不是「TCL 更好」，而是教会观众一个新变量：分区布局与背光控制比分区数量更重要。三条最高赞（12 / 8 / 6）全是「我以前根本不知道」型，说明教育型对比在英国受众里成立，而且能改变他们的选购检查清单。但说服力有明显天花板：一条「两台我看不出区别」加一条「99% 的人根本不在意」，说明对非功课型观众，这场对比打动不了——它服务的是已经在比价的人。品牌转换信号很硬：两位自称 25 年三星用户转向 TCL，一位在店里同时看三星/LG/TCL 后倾向 P8L。真正刺眼的负面不在技术，而在渠道与痛点：Currys 差评拿到 13 赞、店员被问就茫然；一位偏头痛观众说 Hisense 看 10 分钟就退货，要的是 43 寸不刺眼的机型——「亮度与闪烁」是这条视频没覆盖的真实需求。"
  }
 }
