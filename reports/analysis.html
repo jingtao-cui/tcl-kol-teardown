@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TCL 欧洲 KOL · 八条评论深度拆解</title>
+<link rel="stylesheet" href="../style.css">
+<style>
+.wrap{max-width:900px;margin:0 auto;padding:28px 20px 80px}
+.kicker{font-size:11px;letter-spacing:.14em;color:#e60012;font-weight:700}
+h1{font-size:26px;line-height:1.35;margin:10px 0 6px;color:#101828}
+.sub{color:#667085;font-size:13px;margin:0 0 26px}
+.chart{width:100%;height:360px;background:#fff;border:1px solid var(--line);border-radius:12px}
+.fallback{display:none;font-size:12px;color:#667085;padding:12px}
+h2{font-size:17px;margin:40px 0 12px;color:#101828;border-left:3px solid #e60012;padding-left:10px}
+h2 .n{font-family:ui-monospace,monospace;color:#e60012;font-size:12px;margin-right:8px}
+p,li{font-size:13.5px;line-height:1.85;color:#344054}
+p{margin:10px 0}
+.claim{border:1px solid var(--line);border-radius:12px;padding:16px 18px;background:#fffbfb;margin:14px 0}
+.claim b{color:#e60012;font-size:12px;letter-spacing:.06em}
+.claim p{margin:8px 0 0;color:#344054}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:12.5px}
+th,td{padding:8px 10px;border-bottom:1px solid var(--line);text-align:left}
+th{background:#fcfcfd;color:#667085;font-weight:600;font-size:11.5px}
+td.n{font-family:ui-monospace,monospace;text-align:right}
+.bad{color:#c00;font-weight:600}
+.good{color:#0b7a4b;font-weight:600}
+.note{font-size:11.5px;color:#98a2b3;line-height:1.7;margin-top:8px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 0}
+.chip{font-size:12px;border:1px solid var(--line);border-radius:999px;padding:5px 12px;color:#344054;text-decoration:none;background:#fff}
+.chip:hover{border-color:#e60012;color:#e60012}
+</style></head>
+<body><div class="wrap">
+<div class="kicker">TCL · EU KOL TEARDOWN · 深度篇</div>
+<h1>八条评论放在一起看，问题不在内容，在“谁在看”</h1>
+<p class="sub">样本 = 8 条视频「最热门」排序下的评论，合计约 700 条主评论，其中 88 条被判定为模板化/低信息量并单列。<br>口径：评论为人工归类（正 / 中 / 负 + 关注点），情感比例按有效评论重算；播放、互动率、30 秒留存、结尾留存取自《Mini LED_ P系列执行进度总览-2.xlsx》。</p>
+
+<div class="claim"><b>一句话</b><p>这轮 campaign 把「Mini LED = 要有分区」这件事教育成功了，但没有把「TCL 值得买」建立起来。评论区证明的是认知改变，不是购买意愿——而互动率最高的三条，恰恰是最没人看完的三条。</p></div>
+
+<h2><span class="n">01</span>互动率和「看完」是两件不相关的事</h2>
+<p>把 8 条的 30 秒留存和互动率放在同一张图上，会看到一个反直觉的形状：<b>账号越大、留存越高，互动率反而越低</b>。这不是数据错误，是两个指标量的是不同的东西——留存量「内容能不能留住人」，ER 量「留下来的人有多窄」。</p>
+<div class="chart" id="c1"></div><div class="fallback" id="f1"></div>
+<p class="note">气泡大小 = 播放量。横轴 30 秒留存（%），纵轴互动率 ER（%）。Tech in Black 与 Zone of Tech 坐标完全重合（48% · 5.25%），合并为一个气泡。</p>
+<p>四个象限读出来的是四种内容命运：</p>
+<ul>
+<li><b class="good">右上（HDTVTest）</b>：67% 留存 + 3.97% ER，八条里唯一「既看完又愿意说」的一条。它的做法不是把产品夸好，而是把行业议题（三星命名造假）讲透，观众带着立场进来、带着话要说出去。</li>
+<li><b>左上（Tech in Black / Zone of Tech）</b>：ER 5.25%，八条最高，留存只有 48%。这两条的评论几乎都是提问 + 一句夸奖，且 Tech in Black 的 88 条里约 60 条句式雷同、账号是默认昵称。高 ER 在这里是「窄受众 + 铺量」的产物，不能当内容质量读。</li>
+<li><b>右上偏左（ASBYT / TechFlow）</b>：留存 62–65%，ER 只有 0.33% / 1.57%。这是真正的「大众内容」——大量人看完，但没人在评论区吵。ASBYT 的 1.15M 播放配 147 条评论，说明它更像一支被算法推出去的科普片，而不是社区话题。</li>
+<li><b class="bad">左下（Chigz / TechLine）</b>：留存 21%、结尾 4–8.6%。这两条是花钱买曝光的结果（Chigz 71.7% 流量来自 YouTube Ads），观众点进来 30 秒就走，评论区的正面评价因此失去参考价值——留下来评论的人和真正看片的人已经不是同一批。</li>
+</ul>
+
+<h2><span class="n">02</span>情感分布：越专业越负面，越生活越正面</h2>
+<p>把八条的情感结构排在一起，能看出一个稳定规律：<b>技术型受众越集中，负面比例越高</b>；生活型、泛消费型受众的评论区则明显更宽容。这不是产品评价差异，是受众审片标准的差异。</p>
+<div class="chart" id="c2"></div><div class="fallback" id="f2"></div><div class="fallback" id="f2"></div>
+<p class="note">按有效评论归类：正 / 中 / 负。TechLine 与 Tech in Black 已剔除模板化短评后再算。</p>
+<p>HDTVTest 的负面占 28%，但它 149 赞的最高赞并非骂 TCL，而是骂三星——说明负面不等于反对，其中很大一块是「阵营战」而非「产品差评」。真正指向 TCL 的负面集中在三类，且八条里重复出现：<b>售后与保修</b>（新加坡、英国各一条拿到高赞）、<b>赞助导致立场失真</b>（HDTVTest 12 条、Zone 5 条）、<b>暗部细节被压死</b>（M80H 机主反复提）。</p>
+
+<h2><span class="n">03</span>评论可信度：假互动买不来真观看</h2>
+<p>这是这轮数据里最该被记住的一条结论，因为它同时出现在两个不同市场、两个不同量级的账号上。</p>
+<table>
+<tr><th>KOL</th><th class="n">评论总量</th><th class="n">模板化 / 低信息量</th><th class="n">占比</th><th class="n">30 秒留存</th></tr>
+<tr><td>TechLine</td><td class="n">74</td><td class="n">30</td><td class="n bad">41%</td><td class="n">21%</td></tr>
+<tr><td>Tech in Black</td><td class="n">88</td><td class="n">54</td><td class="n bad">61%</td><td class="n">48%</td></tr>
+<tr><td>Zone of Tech</td><td class="n">39</td><td class="n">4</td><td class="n">10%</td><td class="n">48%</td></tr>
+<tr><td>Tecnonauta</td><td class="n">224</td><td class="n">30</td><td class="n">13%</td><td class="n">55%</td></tr>
+<tr><td>其余四条</td><td class="n">320</td><td class="n">0</td><td class="n good">0%</td><td class="n">62–67%</td></tr>
+</table>
+<p>TechLine 是最干净的证据：74 条评论、2.59% 的 ER，看起来是八条里互动第二好的一条；但它的平均观看时长只有 18 秒、结尾留存 1.8%。也就是说，<b>那 74 条评论不是看完的人写的</b>。同一种形态在 Tech in Black 上放大到 61%，留存也只有 48%。反过来，四条零模板评论的视频，留存全部在 62% 以上。</p>
+<p>这条规律的价值在于：以后再看到「互动率很高」的 KOL 报告，先问一句评论长什么样。互动率可以被买，30 秒留存很难。</p>
+
+<h2><span class="n">04</span>三个被指标掩盖的事实</h2>
+<p><b>一、3.9M 展示触达的不是 3.9M 个人。</b>同一批账号反复出现在不同视频下：@Eric-d8e8j 出现在 4 条，@NoonPatrickna981 几乎每条前排，@JosephBrown-q1g、@KinmasLucas、@Melissasmith-i3z 等各出现在 2–3 条。这意味着 3.9M + 585K + 1.31M 的累计展示，实际反复触达的是同一小群欧洲科技爱好者——campaign 的「覆盖」被高估了，而「频次」被低估了。</p>
+<p><b>二、评论区的记忆点被压缩成一个数字。</b>八条里有六条的最高赞讨论都落在「分区数」上（149、65、34、9、9 赞），其中 Zone of Tech 那条把它压缩成「72 分区 vs 1 分区」。教育目标是达成了，但代价是讨论被压扁：观众只会用这一个数字判断好坏，TCL 的其他卖点（亮度、色准、系统、音响）在评论里几乎没有得到复述。</p>
+<p><b>三、售后焦虑是整个品类的，不只是 TCL 的。</b>「TCL 售后差」在 HDTVTest 拿到 26 赞，「英国只保 2 年而竞品 5 年」又拿到一条独立高赞。这两条不是内容问题，是渠道与品牌承诺问题——任何一支视频都解决不了，只能靠政策或单独沟通。</p>
+
+<h2><span class="n">05</span>如果只改三件事</h2>
+<div class="claim"><b>1 · 把「分区数」升级成「买前三步」</b><p>现在观众只会记一个数字，下一步要把数字变成动作：查分区数 → 看暗场字幕测试 → 现场看 45° 可视角。成本只是脚本改动，但能把「知道」变成「会用」，也顺手回答了评论区里反复出现的「P8L vs C6K 怎么选」。</p></div>
+<div class="claim"><b>2 · 赞助声明从「被动挨打」变成「主动交代方法」</b><p>HDTVTest 12 条、Zone 5 条质疑的都不是「有没有赞助」，而是「为什么选这两台、为什么同价位」。与其等观众扒出来，不如开头 15 秒讲清选机逻辑与测试条件（是否校准、什么模式、什么环境光）。这不是洗白，是把可证伪的信息先摆出来。</p></div>
+<div class="claim"><b>3 · 售后与保修单独给一个答案</b><p>新加坡售后、英国 2 年保修这两条已经形成小共识，且在技术型受众里拿到了高赞。建议单独出一条 60–90 秒的说明，或在所有视频描述区置顶保修政策对比。这条不解决，任何画质内容的天花板都会被它压住。</p></div>
+
+<h2><span class="n">06</span>这批数据还不能回答的两件事</h2>
+<p><b>热门排序会放大争议。</b>八条评论全部按「最热门」抓取，负面与冲突天然被前置。要做真实情感分布，需要导出全部评论（含回复）重算——TechLine 与 Tech in Black 那 88 条模板评论，只有在全量数据里才能确认是否属于刷量。</p>
+<p><b>重复账号的图谱还不完整。</b>目前只确认了 10 个跨 2–4 条出现的账号。要判断「触达被高估多少」，需要 8 条全部评论的账号列表做交集——这一步拿到数据后一小时能算完，但它决定这份报告能不能对外讲覆盖量。</p>
+
+<p class="note">数据来源：《Mini LED_ P系列执行进度总览-2.xlsx》（Video Tracker / Video History / KOL后台数据汇总，截至 2026-11-09）+ 8 条视频「最热门」评论人工归类。<br>七维度画面拆解未纳入本篇——尚无关键帧。本篇所有结论均由公开评论与后台指标推出，不含推测性评分。</p>
+
+<div class="chips">
+<a class="chip" href="index.html">← 回到八条汇总</a>
+<a class="chip" href="asbyt.html#comments">ASBYT</a>
+<a class="chip" href="tecnonauta.html#comments">Tecnonauta</a>
+<a class="chip" href="techflow.html#comments">TechFlow</a>
+<a class="chip" href="chigztechreviews.html#comments">Chigz</a>
+<a class="chip" href="techline.html#comments">TechLine</a>
+<a class="chip" href="hdtvtest.html#comments">HDTVTest</a>
+<a class="chip" href="techinblack.html#comments">Tech in Black</a>
+<a class="chip" href="zoneoftech.html#comments">Zone of Tech</a>
+</div>
+</div>
+
+<script src="../assets/echarts.min.js"></script>
+<script>
+(function(){
+  var hasE = typeof echarts !== 'undefined';
+  function fallback(id, rows){
+    var el = document.getElementById(id.replace('c','f'));
+    if(!el) return;
+    var h = '<table><tr><th>KOL</th><th>30 秒留存</th><th>互动率</th><th>播放</th></tr>';
+    for (var i=0;i<rows.length;i++){ h += '<tr><td>'+rows[i][0]+'</td><td>'+rows[i][1]+'%</td><td>'+rows[i][2]+'%</td><td>'+rows[i][3]+'</td></tr>'; }
+    el.innerHTML = h + '</table>';
+    el.style.display = 'block';
+  }
+  var pts = [
+    ['ASBYT', 65, 0.33, 1154923],
+    ['Tecnonauta', 55, 1.57, 351099],
+    ['TechFlow', 62, 1.57, 295841],
+    ['HDTVTest', 67, 3.97, 58769],
+    ['Chigz', 21, 1.33, 92391],
+    ['TechLine', 21, 2.59, 61573],
+    ['Tech in Black / Zone', 48, 5.25, 66719]
+  ];
+  var size = [43, 24, 22, 10, 12, 10, 14];
+  if(!hasE){ fallback('c1', pts); fallback('c2', []); return; }
+  try{
+    var a = echarts.init(document.getElementById('c1'));
+    a.setOption({
+      animation:false,
+      backgroundColor:'transparent',
+      title:{text:'', left:'center'},
+      tooltip:{trigger:'item', triggerOn:'click', renderMode:'richText', confine:true,
+        textStyle:{fontSize:11, lineHeight:16}, padding:[6,8]},
+      grid:{left:48, right:24, top:28, bottom:44, containLabel:true},
+      xAxis:{type:'value', min:0, max:80,
+        axisLabel:{color:'#667085', fontSize:11}, splitLine:{lineStyle:{color:'#f2f4f7'}}},
+      yAxis:{type:'value', min:0, max:6,
+        axisLabel:{color:'#667085', fontSize:11}, splitLine:{lineStyle:{color:'#f2f4f7'}}},
+      series:[{type:'scatter', symbolSize:function(v){return 12;},
+        data: pts.map(function(d,i){ return {value:[d[1],d[2],d[3]], symbolSize:size[i], name:d[0],
+          itemStyle:{color: d[1]>=60 && d[2]>=3 ? '#12b76a' : (d[1]<40 ? '#e60012' : '#8BC8EA'), opacity:.9},
+          label:{show:true, position:'right', formatter:function(p){return p.data.name;}, fontSize:10.5, color:'#344054'}}; }),
+        labelLayout:{hideOverlap:true}}]
+    });
+    var b = echarts.init(document.getElementById('c2'));
+    var cats = ['Tecnonauta','HDTVTest','ASBYT','TechLine','Chigz','Tech in Black','Zone of Tech','TechFlow'];
+    b.setOption({
+      animation:false,
+      backgroundColor:'transparent',
+      tooltip:{trigger:'axis', triggerOn:'click', renderMode:'richText', confine:true,
+        textStyle:{fontSize:10.5, lineHeight:15}, padding:[6,8]},
+      legend:{top:0, itemWidth:12, itemHeight:8, textStyle:{color:'#6B7280', fontSize:11}},
+      grid:{left:88, right:36, top:36, bottom:24, containLabel:true},
+      xAxis:{type:'value', max:100, axisLabel:{formatter:'{value}%', color:'#667085', fontSize:11},
+        splitLine:{lineStyle:{color:'#f2f4f7'}}},
+      yAxis:{type:'category', data:cats, axisLabel:{color:'#344054', fontSize:11}, axisTick:{show:false}},
+      series:[
+        {name:'正', type:'bar', stack:'s', barWidth:14, itemStyle:{color:'#12b76a'},
+         data:[40,38,30,62,53,47,40,25]},
+        {name:'中', type:'bar', stack:'s', barWidth:14, itemStyle:{color:'#cbd5e1'},
+         data:[33,34,41,27,30,41,34,51]},
+        {name:'负', type:'bar', stack:'s', barWidth:14, itemStyle:{color:'#e60012'},
+         data:[27,28,29,11,17,12,26,24]}
+      ]
+    });
+    window.addEventListener('resize', function(){ a.resize(); b.resize(); });
+  }catch(e){ fallback('c1', pts); fallback('c2', []); }
+})();
+</script>
+</body></html>
