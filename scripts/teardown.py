@@ -225,6 +225,81 @@ def cmd_scaffold(args):
           f"assets/frames/{args.slug}/ 并改扩展名。")
 
 
+
+# ---------------------------------------------------------------- batch
+VIDEO_EXT = {".mp4", ".mov", ".webm", ".mkv", ".m4v"}
+
+
+def slugify(name):
+    """文件名 → URL 友好的 slug：UK_HDTVTest_P8L_20261031 → uk-hdtvtest-p8l-20261031"""
+    out = re.sub(r"[^0-9a-zA-Z\u4e00-\u9fff]+", "-", name.strip()).strip("-").lower()
+    return re.sub(r"-{2,}", "-", out)
+
+
+def cmd_batch(args):
+    src = Path(args.dir)
+    if not src.is_dir():
+        sys.exit(f"[失败] {src} 不是目录")
+    videos = sorted([p for p in src.iterdir() if p.suffix.lower() in VIDEO_EXT])
+    if not videos:
+        sys.exit(f"[失败] {src} 里没有视频文件（{' '.join(sorted(VIDEO_EXT))}）")
+
+    rows = []
+    for i, v in enumerate(videos, 1):
+        stem = v.stem
+        # 约定：MARKET_KOL_PRODUCT_YYYYMMDD；拆不出来就整名当 slug
+        parts = [x for x in stem.split("_") if x]
+        market = parts[0] if len(parts) >= 3 else ""
+        kol = parts[1] if len(parts) >= 3 else ""
+        product = parts[2] if len(parts) >= 4 else (parts[2] if len(parts) == 3 else "")
+        date = parts[-1] if parts and re.fullmatch(r"\d{8}", parts[-1]) else ""
+        slug = slugify("_".join([market, kol, product]) or stem) or f"video-{i}"
+
+        outdir = ROOT / "work" / slug
+        outdir.mkdir(parents=True, exist_ok=True)
+        print(f"\n[{i}/{len(videos)}] {v.name}  →  {slug}")
+
+        sub = [sys.executable, str(Path(__file__)), "stats", str(v),
+               "--threshold", str(args.threshold), "--out", str(outdir / "stats.json")]
+        r = subprocess.run(sub, capture_output=True, text=True)
+        if r.returncode != 0:
+            print(f"   [跳过] 统计失败：{r.stderr.strip()[:120]}")
+            continue
+        info = json.loads((outdir / "stats.json").read_text(encoding="utf-8"))
+
+        sub = [sys.executable, str(Path(__file__)), "frames", str(v),
+               "--every", str(args.every), "--out", str(outdir / "sweep")]
+        subprocess.run(sub, capture_output=True, text=True)
+
+        sub = [sys.executable, str(Path(__file__)), "sheet", str(outdir / "sweep"),
+               "--out", str(outdir / "contact.jpg"),
+               "--cols", str(args.cols), "--thumb", str(args.thumb)]
+        subprocess.run(sub, capture_output=True, text=True)
+
+        rows.append({
+            "no": i, "file": v.name, "slug": slug, "market": market,
+            "kol": kol, "product": product, "date": date,
+            "duration": info["duration_label"], "cuts": info["cuts_total"],
+            "avg_shot": info["avg_shot_seconds"],
+            "contact": str(outdir / "contact.jpg").replace(str(ROOT) + "/", ""),
+            "stats": str(outdir / "stats.json").replace(str(ROOT) + "/", ""),
+        })
+
+    out_md = Path(args.out) if args.out else (ROOT / "work" / "index.md")
+    out_md.parent.mkdir(parents=True, exist_ok=True)
+    head = "| # | 文件 | slug | 市场 | KOL | 产品 | 时长 | 切点 | 平均镜头 | 联系表 |\n|---|---|---|---|---|---|---|---|---|---|\n"
+    body = "".join(
+        f"| {r['no']} | {r['file']} | `{r['slug']}` | {r['market']} | {r['kol']} | "
+        f"{r['product']} | {r['duration']} | {r['cuts']} | {r['avg_shot']}s | "
+        f"[contact]({r['contact']}) |\n" for r in rows)
+    out_md.write_text(head + body, encoding="utf-8")
+    (out_md.parent / "index.json").write_text(
+        json.dumps(rows, ensure_ascii=False, indent=2), encoding="utf-8")
+
+    print(f"\n完成 {len(rows)}/{len(videos)} 条 → {out_md.relative_to(ROOT)}")
+    print(f"每条的联系表在 work/<slug>/contact.jpg，把这几张图发我，我一次写七维度。")
+
+
 def main():
     ap = argparse.ArgumentParser(description="TCL KOL 视频拆解流水线")
     sub = ap.add_subparsers(dest="cmd", required=True)
@@ -258,6 +333,15 @@ def main():
     sc.add_argument("--subtitle")
     sc.add_argument("--force", action="store_true")
     sc.set_defaults(func=cmd_scaffold)
+
+    b = sub.add_parser("batch", help="批量处理一个目录里的多条视频")
+    b.add_argument("dir")
+    b.add_argument("--every", type=float, default=30, help="粗扫间隔秒数，默认 30")
+    b.add_argument("--threshold", type=float, default=0.3)
+    b.add_argument("--cols", type=int, default=4)
+    b.add_argument("--thumb", type=int, default=320)
+    b.add_argument("--out", help="汇总表输出路径，默认 work/index.md")
+    b.set_defaults(func=cmd_batch)
 
     args = ap.parse_args()
     args.func(args)

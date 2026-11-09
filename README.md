@@ -127,6 +127,55 @@ npm 不需要；把 work/my-video/frames/*.jpg 挪到 assets/frames/my-video/，
 
 `stats` 用 ffmpeg `scene` 检测（默认阈值 0.3）。真人实拍视频通常 0.3 就够；动画 / 同场景长镜头多的视频切点会偏少，把 `--threshold` 降到 `0.2` 再跑。切点数是**近似值**，页面上要按「约」来写。
 
+## 文件怎么命名（8 条一起跑之前先统一）
+
+**格式**：`{市场}_{KOL}_{产品}_{YYYYMMDD}.mp4`，四段用下划线隔开，全 ASCII。
+
+| 段 | 取值 | 例 |
+|---|---|---|
+| 市场 | 两位国家码 | `UK` / `DE` / `FR` / `ES` / `IT` / `PL` / `NL` / `SE` |
+| KOL | 频道名去掉空格和符号 | `HDTVTest` / `Mrwhosetheboss` / `TechInBlack` |
+| 产品 | 型号简写 | `P8L` / `X11L` / `C8L` / `C7L` |
+| 日期 | 视频发布日期 | `20261031` |
+
+示例：
+
+```
+UK_HDTVTest_P8L_20261031.mp4
+FR_Nowtech_P8L_20261028.mp4
+ES_Tecnonauta_X11L_20261024.mp4
+DE_Mrwhosetheboss_C8L_20261020.mp4
+```
+
+- **别用中文文件名**，也别带 `(`、`#`、空格 —— 脚本会把它转成 slug，中文和符号会让 URL 变丑。
+- 同一个 KOL 有多条，末尾补序号：`UK_HDTVTest_P8L_20261031-2.mp4`。
+- 脚本自动生成 slug：`UK_HDTVTest_P8L_20261031` → `uk-hdtvtest-p8l` → 页面地址 `/reports/uk-hdtvtest-p8l.html`。
+
+## 一次处理 8 条（批量）
+
+把 8 个视频放进同一个文件夹（例：`~/Downloads/tcl-8/`），然后一条命令：
+
+```bash
+python3 scripts/teardown.py batch ~/Downloads/tcl-8 --every 30
+```
+
+产出：
+
+```
+work/
+├── index.md                     # 8 条一张表：市场 / KOL / 产品 / 时长 / 切点 / 平均镜头
+├── index.json
+├── uk-hdtvtest-p8l/
+│   ├── stats.json               # 切点节奏
+│   ├── sweep/                   # 每 30 秒一张，粗扫用
+│   └── contact.jpg              # 联系表（发给我读图用）
+└── ...
+```
+
+单个视频想再精抽关键帧，回到第 3 步用 `frames --times ... --labels ...` 补，输出到同一条的 `work/<slug>/frames/`。
+
+**批量之后怎么交付**：把 8 张 `contact.jpg` 一起发我，我逐条写七维度、结论和时间轴；你确认内容后我用 `scaffold` 生成 8 个页面，一次性 push。
+
 ## 口径与合规（页脚已内置，别删）
 
 - 播放 / 点赞 / 评论 / 粉丝数来自平台公开数据；完播率、平均观看时长、受众画像需 KOL 授权回传，公开 API 拿不到。

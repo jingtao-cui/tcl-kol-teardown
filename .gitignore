@@ -1,3 +1,6 @@
 node_modules/
 .DS_Store
 *.zip
+
+# 本地工作区：视频、抽帧、联系表不进仓库
+work/
