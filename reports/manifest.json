@@ -1,1 +1,106 @@
-[]
+[
+  {
+    "slug": "asbyt",
+    "title": "DON'T Buy a TV Before Watching This!",
+    "subtitle": "ASBYT · MiniLED Education",
+    "project": "head",
+    "kol": "ASBYT",
+    "market": "",
+    "duration": "",
+    "score": "1.15M 播放",
+    "file": "reports/asbyt.html",
+    "views": 1154923,
+    "er": 0.003260823448835983
+  },
+  {
+    "slug": "tecnonauta",
+    "title": "NO COMPRES tu TV sin antes SABER ESTO!!!! Mini LED",
+    "subtitle": "Tecnonauta · MiniLED Education",
+    "project": "head",
+    "kol": "Tecnonauta",
+    "market": "",
+    "duration": "",
+    "score": "351.1K 播放",
+    "file": "reports/tecnonauta.html",
+    "views": 351099,
+    "er": 0.01571351670041783
+  },
+  {
+    "slug": "techflow",
+    "title": "Watch This Before You Buy a New TV!!",
+    "subtitle": "TechFlow · P8L vs M80H",
+    "project": "mid",
+    "kol": "TechFlow",
+    "market": "",
+    "duration": "",
+    "score": "295.8K 播放",
+    "file": "reports/techflow.html",
+    "views": 295841,
+    "er": 0.01566043922242015
+  },
+  {
+    "slug": "chigztechreviews",
+    "title": "Samsung M80H vs TCL P8L",
+    "subtitle": "Chigz tech reviews · P8L vs M80H",
+    "project": "mid",
+    "kol": "Chigz tech reviews",
+    "market": "",
+    "duration": "",
+    "score": "92.4K 播放",
+    "file": "reports/chigztechreviews.html",
+    "views": 92391,
+    "er": 0.013323808596075376
+  },
+  {
+    "slug": "techline",
+    "title": "TCL P8L vs Samsung M80H – Not All Mini LED TVs Are Equal!",
+    "subtitle": "Techline · P8L vs M80H",
+    "project": "mid",
+    "kol": "Techline",
+    "market": "",
+    "duration": "",
+    "score": "61.6K 播放",
+    "file": "reports/techline.html",
+    "views": 61573,
+    "er": 0.025920452146232925
+  },
+  {
+    "slug": "hdtvtest",
+    "title": "Not All Mini LED TVs Are Equal...",
+    "subtitle": "HDTVtest · P8L vs M80H",
+    "project": "mid",
+    "kol": "HDTVtest",
+    "market": "",
+    "duration": "",
+    "score": "58.8K 播放",
+    "file": "reports/hdtvtest.html",
+    "views": 58769,
+    "er": 0.039731831407714954
+  },
+  {
+    "slug": "techinblack",
+    "title": "TCL P8L vs Samsung M80H – Which TV Delivers TRUE Mini LED?",
+    "subtitle": "Tech In Black · P8L vs M80H",
+    "project": "mid",
+    "kol": "Tech In Black",
+    "market": "",
+    "duration": "",
+    "score": "42.9K 播放",
+    "file": "reports/techinblack.html",
+    "views": 42886,
+    "er": 0.052464673786317216
+  },
+  {
+    "slug": "zoneoftech",
+    "title": "TCL P8L VS Samsung M80H",
+    "subtitle": "Zone of Tech · P8L vs M80H",
+    "project": "mid",
+    "kol": "Zone of Tech",
+    "market": "",
+    "duration": "",
+    "score": "23.8K 播放",
+    "file": "reports/zoneoftech.html",
+    "views": 23833,
+    "er": 0.05249024461880586
+  }
+]
