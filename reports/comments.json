@@ -453,5 +453,107 @@
    }
   ],
   "readout": "这条是八条里第一份「评论数据可疑」的证据：74 条评论中约 30 条是「Good stuff as usual / Nice info / Great video mate」这类模板化短评，账号名多为「英文姓名 + 随机后缀」的默认谷歌昵称；而这条的后台是 30 秒留存 21%、结尾只剩 1.8%——真有 74 人认真看完并评论，完播不会低到这个程度。做内容质量评分时这批必须剔除，否则「互动率高」会被误读成「内容好」。剔除后剩下的有效评论其实很硬：10 赞那条说暗场里 P8L 背景更黑、三星发灰；8 赞是老 TCL 用户表示要继续留在品牌里。真正该记的是怀疑派：「坐沙发上根本看不出这些差别」「两台看着差不多」——这条对比只对已经在做功课的人有效，对普通观众的说服力有限。"
+ },
+ "hdtvtest": {
+  "scope": "最热门排序 · 抓取到的主评论约 95 条（不含作者回复）",
+  "sentiment": {
+   "pos": 42,
+   "neu": 28,
+   "neg": 25
+  },
+  "topics": [
+   {
+    "name": "「无分区 = 诈骗」共识",
+    "count": 8,
+    "note": "最高赞 149 的一条就是宣判：没有 dimming zones 的 Mini LED 是 scam"
+   },
+   {
+    "name": "恰饭与剧本雷同指控",
+    "count": 9,
+    "note": "有人称找到 5 条逐字相同的 TCL 赞助视频——campaign 级风险"
+   },
+   {
+    "name": "三星营销欺骗史",
+    "count": 7,
+    "note": "QLED / Micro-RGB / 假 Mini LED，加上美国诉讼，被观众串成一条线"
+   },
+   {
+    "name": "技术细节挑刺",
+    "count": 6,
+    "note": "72 分区太小、TCL 暗部压死细节、应先校准再比"
+   },
+   {
+    "name": "OLED 阵营",
+    "count": 6,
+    "note": "「还是 OLED」「Mini LED 只是高级 LCD」"
+   },
+   {
+    "name": "TCL 售后 / 保修 / 隐私",
+    "count": 5,
+    "note": "新加坡售后差、英国只 2 年保修（对手 5 年）、隐私顾虑"
+   },
+   {
+    "name": "型号诉求",
+    "count": 5,
+    "note": "该评 C7L / C8L / QM8L；买了 M80H 的人问怎么办"
+   },
+   {
+    "name": "转向 TCL 的真实案例",
+    "count": 4,
+    "note": "25 年三星用户转投；被三星 Q8F 坑过的人指名要买 P8L"
+   }
+  ],
+  "quotes": [
+   {
+    "who": "@tombldrz",
+    "likes": 149,
+    "tag": "正",
+    "text": "Calling a TV mini-LED that has no dimming zones is a pure scam.",
+    "zh": "把没有分区的电视叫 Mini LED 就是纯诈骗——全场最高赞，149。"
+   },
+   {
+    "who": "@Melissasmith-i3z",
+    "likes": 65,
+    "tag": "正",
+    "text": "Even with just 72 dimming zones, the P8L manages to show why having actual local dimming matters. The side-by-side footage makes a much stronger point than any marketing spec sheet.",
+    "zh": "72 个分区也能证明真分区控光的价值，并排画面比任何参数表都有说服力。"
+   },
+   {
+    "who": "@wolfmanravi",
+    "likes": 34,
+    "tag": "正",
+    "text": "I've been selling TVs for 5 years… a Samsung 85\" MiniLED at $2,495AUD, something ain't right. I've had to explain so many times it's just not a real MiniLED. The lawsuit was my first vindication and this is the cherry on top.",
+    "zh": "一线销售员现身：客户反复被「假 Mini LED」坑，这条视频让他解气。"
+   },
+   {
+    "who": "@thetinkerer5322",
+    "likes": 26,
+    "tag": "负",
+    "text": "TCL needs to work on their after-sales service especially in Singapore… huge number of owners report mediocre service when repair is needed.",
+    "zh": "售后是软肋：新加坡大量用户反映维修服务差——这条不是内容问题，是运营问题。"
+   },
+   {
+    "who": "@nicodaydolmatov_daily4274",
+    "likes": 0,
+    "tag": "负",
+    "text": "I just found five more videos with the same script and context… word to word. All of them sponsored by TCL.",
+    "zh": "找到 5 条逐字相同的 TCL 赞助视频——从「单条恰饭」升级为「模板化投放」。"
+   },
+   {
+    "who": "@robfrost3789",
+    "likes": 0,
+    "tag": "负",
+    "text": "In the UK TCL only give a 2 year warranty, where Sony, Samsung and LG generally give 5 years free. That says TCL aren't confident in long-term build quality.",
+    "zh": "英国 TCL 只给 2 年保修，对手普遍 5 年——被解读为对自家耐用性没信心。"
+   },
+   {
+    "who": "@ksh6",
+    "likes": 0,
+    "tag": "中",
+    "text": "72 dimming zones on a 65-inch is 12cm x 14cm per zone… you need 300+ zones on a 55-inch and 400+ on a 65-inch for true local dimming benefit.",
+    "zh": "72 分区在 65 寸上每格 12×14cm，太大；真要有效果 55 寸需 300+ 区、65 寸需 400+ 区。"
+   }
+  ],
+  "readout": "这条是八条里舆论最强势的一条，而且强势的方向不是夸 TCL：最高赞 149 的那条直接宣判「没有分区的 Mini LED 就是诈骗」，观众已经把这场对比当成对三星的公开审判——一位英国电视销售员留言说客户反复被「假 Mini LED」坑，这条视频让他解气。这是巨大的道义红利，但也带来两个反噬：一是「恰饭」指控升级了，有观众说他找到 5 条逐字相同的 TCL 赞助视频，这已经是 campaign 级风险，不是单条内容的问题；二是 TCL 自己的软肋被集中点名——新加坡售后差、英国只给 2 年保修（对手 5 年）、处理器与 upscaling、隐私顾虑。技术层面最专业的一条是 72 分区的算术：65 寸上每格 12×14cm，真要有效果需要 300–400 区——这比任何情绪化评论都更能指导话术。"
  }
 }
