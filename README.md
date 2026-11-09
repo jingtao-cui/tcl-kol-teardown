@@ -26,9 +26,11 @@ tcl-kol-teardown/
 ├── assets/
 │   ├── cover.svg           # 封面占位（换成 cover.jpg 即可）
 │   └── frames/*.svg        # 22 张抽帧占位，文件名 = 时间码
+├── scripts/teardown.py     # 抽帧 / 镜头统计 / 联系表 / 生成新页
 ├── LICENSE
 └── README.md
 ```
+
 
 ## 本地预览
 
@@ -72,6 +74,58 @@ git push -u origin main
 然后仓库 **Settings → Pages → Build and deployment → Source 选「Deploy from a branch」**，Branch 选 `main`、目录选 `/ (root)`，Save。每次 push 到 main 后 30–60 秒自动重建，地址形如 `https://<账号>.github.io/tcl-kol-teardown/`。
 
 > 想改成 GitHub Actions 部署（可自定义构建步骤），需要 token 具备 `workflow` 权限；把 `pages.yml` 放回 `.github/workflows/` 即可，模板见本次交付的 `pages_workflow_keep/`。
+
+## 自己分析一条视频（5 步流水线）
+
+前提：本机有 `ffmpeg` / `ffprobe` 和 Python 的 `Pillow`。
+
+**第 1 步 · 拿到视频**（下载到本地，任意格式 mp4/mov/webm 都行）
+
+```bash
+# 有 yt-dlp 的话：
+yt-dlp -f "bv*[height<=1080]+ba/b" -o "~/Downloads/%(title)s.%(ext)s" "<视频链接>"
+```
+
+**第 2 步 · 先粗扫，摸清时长与节奏**（不用先猜时间码）
+
+```bash
+python3 scripts/teardown.py stats ~/Downloads/video.mp4
+# → 时长、镜头切点数、平均几秒一个镜头、每 30 秒切点柱（可直接粘进页面）
+python3 scripts/teardown.py frames ~/Downloads/video.mp4 --every 30 --out work/scan
+# → 每 30 秒一张，先看整体长什么样
+```
+
+**第 3 步 · 定关键时间码，精抽**
+
+```bash
+python3 scripts/teardown.py frames ~/Downloads/video.mp4 \
+  --times 0:00,0:05,0:37,0:55,3:07,3:55 \
+  --labels 门店,店内,两台并排,背板,立标准,产品登场 \
+  --out work/my-video/frames
+# 文件名自动变成 00s-门店.jpg / 3m55-产品登场.jpg，和页面 figcaption 一一对应
+```
+
+**第 4 步 · 拼一张联系表，交给多模态读**
+
+```bash
+python3 scripts/teardown.py sheet work/my-video/frames --out work/my-video/contact.jpg
+```
+
+把 `contact.jpg` 发给我（或直接发 `work/my-video/frames/` 整目录），我一张图就能看到 12–20 帧，接着写七维度拆解、时间轴和结论。**这一步是唯一需要人的地方：判断 Hook、卖点顺序、竞品打法。**
+
+**第 5 步 · 生成新报告页并上线**
+
+```bash
+python3 scripts/teardown.py scaffold --slug my-video --title "标题" --subtitle "副标题"
+# → reports/my-video.html，抽帧路径自动指向 assets/frames/my-video/
+npm 不需要；把 work/my-video/frames/*.jpg 挪到 assets/frames/my-video/，改扩展名后 git push 即可
+```
+
+上线后地址：`https://jingtao-cui.github.io/tcl-kol-teardown/reports/<slug>.html`
+
+### 镜头统计说明
+
+`stats` 用 ffmpeg `scene` 检测（默认阈值 0.3）。真人实拍视频通常 0.3 就够；动画 / 同场景长镜头多的视频切点会偏少，把 `--threshold` 降到 `0.2` 再跑。切点数是**近似值**，页面上要按「约」来写。
 
 ## 口径与合规（页脚已内置，别删）
 
