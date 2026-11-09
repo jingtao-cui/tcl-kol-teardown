@@ -176,6 +176,62 @@ work/
 
 **批量之后怎么交付**：把 8 张 `contact.jpg` 一起发我，我逐条写七维度、结论和时间轴；你确认内容后我用 `scaffold` 生成 8 个页面，一次性 push。
 
+## 两个分析项目怎么分（8 条 = 4 + 4）
+
+两条内容逻辑完全不同，必须分开成两个 project，页面上也分开归类：
+
+| 项目 | 目录名 | 内容特征 | 这组在证明什么 |
+|---|---|---|---|
+| **头部 KOL · MiniLED 教育** | `head-miniled/` | 频道体量大（40 万粉以上）、以「教你怎么判断」为主、产品出现晚 | 叙事结构、信任建构、把「标准」变成自己的话术 |
+| **中部 KOL · P8L vs M80H** | `mid-p8l-m80h/` | 频道体量中等、上来就是两台并排、结论锋利 | 说服效率、实拍证据、CTA 与转化意图 |
+
+### 文件夹结构
+
+```
+~/Downloads/tcl-kol/
+├── head-miniled/                       # 头部 KOL · MiniLED 教育（4 条）
+│   ├── UK_HDTVTest_MiniLED-Edu_20261031.mp4
+│   ├── FR_Mathis_MiniLED-Edu_20261027.mp4
+│   ├── DE_TechNick_MiniLED-Edu_20261022.mp4
+│   └── UK_Mrwhosetheboss_MiniLED-Edu_20261018.mp4
+└── mid-p8l-m80h/                       # 中部 KOL · P8L vs M80H（4 条）
+    ├── FR_Nowtech_P8L-vs-M80H_20261028.mp4
+    ├── ES_Tecnonauta_P8L-vs-M80H_20261024.mp4
+    ├── IT_TechInBlack_P8L-vs-M80H_20261020.mp4
+    └── ES_ZoneofTech_P8L-vs-M80H_20261016.mp4
+```
+
+**文件名四段**：`{市场}_{KOL}_{内容类型}_{日期}.mp4`
+
+- 市场：`UK` / `DE` / `FR` / `ES` / `IT` / `PL` / `NL` / `SE`
+- KOL：频道名去空格，`TechInBlack` 不是 `Tech In Black`
+- 内容类型：头部组统一写 `MiniLED-Edu`，中部组统一写 `P8L-vs-M80H`
+- 日期：发布日 `YYYYMMDD`
+
+不要加 `HEAD_` / `MID_` 前缀 —— **项目靠文件夹区分，不靠文件名**，加了反而让 slug 变长（`head-uk-hdtvtest-miniled-edu`）。
+
+### 两条命令
+
+```bash
+python3 scripts/teardown.py batch ~/Downloads/tcl-kol/head-miniled  --name head-miniled  --every 30
+python3 scripts/teardown.py batch ~/Downloads/tcl-kol/mid-p8l-m80h  --name mid-p8l-m80h --every 30
+```
+
+产出 `work/head-miniled/index.md` 与 `work/mid-p8l-m80h/index.md`，两张表各 4 行，每条一份 `contact.jpg`。
+
+### 生成页面时带上项目归属
+
+```bash
+python3 scripts/teardown.py scaffold --slug uk-hdtvtest-miniled \
+  --title "Mini LED 到底该怎么看" --project head \
+  --kol HDTVTest --market UK --duration 8:50 --score 89
+python3 scripts/teardown.py index      # 重新渲染 reports/index.html
+```
+
+`--project head|mid` 决定它出现在汇总页哪一节；`index` 每次都按 `reports/manifest.json` 重建，不用手改 HTML。
+
+汇总页地址：`https://jingtao-cui.github.io/tcl-kol-teardown/reports/`
+
 ## 口径与合规（页脚已内置，别删）
 
 - 播放 / 点赞 / 评论 / 粉丝数来自平台公开数据；完播率、平均观看时长、受众画像需 KOL 授权回传，公开 API 拿不到。

@@ -221,6 +221,19 @@ def cmd_scaffold(args):
     html = html.replace("assets/frames/", f"assets/frames/{args.slug}/")
     dst.write_text(html, encoding="utf-8")
     print(f"已生成 {dst}")
+    if not args.no_register:
+        mf = dst_dir / "manifest.json"
+        data = json.loads(mf.read_text(encoding="utf-8")) if mf.exists() else []
+        entry = {
+            "slug": args.slug, "title": title, "subtitle": args.subtitle or "",
+            "project": args.project, "kol": args.kol, "market": args.market,
+            "duration": args.duration, "score": args.score,
+            "file": f"reports/{args.slug}.html",
+        }
+        data = [d for d in data if d.get("slug") != args.slug] + [entry]
+        mf.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
+        print(f"已登记到 reports/manifest.json（project={args.project}）")
+
     print("接下来：改 focus（结论/评分）、七个维度正文、时间轴，把 frames 挪到 "
           f"assets/frames/{args.slug}/ 并改扩展名。")
 
@@ -255,7 +268,7 @@ def cmd_batch(args):
         date = parts[-1] if parts and re.fullmatch(r"\d{8}", parts[-1]) else ""
         slug = slugify("_".join([market, kol, product]) or stem) or f"video-{i}"
 
-        outdir = ROOT / "work" / slug
+        outdir = ROOT / "work" / args.name / slug if args.name else ROOT / "work" / slug
         outdir.mkdir(parents=True, exist_ok=True)
         print(f"\n[{i}/{len(videos)}] {v.name}  →  {slug}")
 
@@ -285,19 +298,103 @@ def cmd_batch(args):
             "stats": str(outdir / "stats.json").replace(str(ROOT) + "/", ""),
         })
 
-    out_md = Path(args.out) if args.out else (ROOT / "work" / "index.md")
+    base = (ROOT / "work" / args.name) if args.name else (ROOT / "work")
+    out_md = Path(args.out) if args.out else (base / "index.md")
     out_md.parent.mkdir(parents=True, exist_ok=True)
     head = "| # | 文件 | slug | 市场 | KOL | 产品 | 时长 | 切点 | 平均镜头 | 联系表 |\n|---|---|---|---|---|---|---|---|---|---|\n"
-    body = "".join(
-        f"| {r['no']} | {r['file']} | `{r['slug']}` | {r['market']} | {r['kol']} | "
-        f"{r['product']} | {r['duration']} | {r['cuts']} | {r['avg_shot']}s | "
-        f"[contact]({r['contact']}) |\n" for r in rows)
+    body = ""
+    for r in rows:
+        rel = os.path.relpath(Path(r["contact"]), out_md.parent)
+        body += (f"| {r['no']} | {r['file']} | `{r['slug']}` | {r['market']} | {r['kol']} | "
+                 f"{r['product']} | {r['duration']} | {r['cuts']} | {r['avg_shot']}s | "
+                 f"[contact]({rel}) |\n")
     out_md.write_text(head + body, encoding="utf-8")
     (out_md.parent / "index.json").write_text(
         json.dumps(rows, ensure_ascii=False, indent=2), encoding="utf-8")
 
     print(f"\n完成 {len(rows)}/{len(videos)} 条 → {out_md.relative_to(ROOT)}")
     print(f"每条的联系表在 work/<slug>/contact.jpg，把这几张图发我，我一次写七维度。")
+
+
+
+# ---------------------------------------------------------------- index
+PROJECTS = {
+    "head": ("头部 KOL · MiniLED 教育视频",
+             "看头部频道怎么「重新定义判断标准」：先解构标签，再立标准，最后才落产品。"
+             "这一组衡量的是叙事结构与信任建构，不是转化。"),
+    "mid": ("中部 KOL · P8L vs M80H 对比",
+            "看中部频道怎么打赢一场并排对比：切入速度、实拍证据、结论锋利度。"
+            "这一组衡量的是说服效率与转化意图。"),
+}
+
+
+def cmd_index(args):
+    rdir = ROOT / "reports"
+    mf = rdir / "manifest.json"
+    if not mf.exists():
+        sys.exit("[失败] reports/manifest.json 不存在，先用 scaffold 生成页面")
+    data = json.loads(mf.read_text(encoding="utf-8"))
+
+    cards = []
+    for key, (name, desc) in PROJECTS.items():
+        items = [d for d in data if d.get("project") == key]
+        inner = ""
+        for i, d in enumerate(items, 1):
+            score = f'<span class="score">{d["score"]}</span>' if d.get("score") else ""
+            meta = " · ".join(x for x in [d.get("market"), d.get("kol"),
+                                          d.get("duration")] if x)
+            inner += (
+                f'      <a class="card" href="{d["slug"]}.html">\n'
+                f'        <span class="no">{i:02d}</span>\n'
+                f'        <span class="txt"><b>{d["title"]}</b>'
+                f'<em>{meta}</em></span>{score}\n'
+                f'      </a>\n')
+        if not inner:
+            inner = '      <p class="empty">待接入。跑完 scaffold 后自动出现在这里。</p>\n'
+        cards.append(
+            f'  <section class="proj">\n'
+            f'    <h2>{name}</h2>\n'
+            f'    <p class="pdesc">{desc}</p>\n'
+            f'    <div class="cards">\n{inner}    </div>\n'
+            f'  </section>\n')
+
+    html = f"""<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TCL 欧洲 KOL 视频拆解 · 两个分析项目</title>
+<link rel="stylesheet" href="../style.css">
+<style>
+.wrap{{max-width:1040px;margin:0 auto;padding:56px 24px 80px}}
+.top{{display:flex;align-items:baseline;gap:14px;border-bottom:2px solid #101828;padding-bottom:14px}}
+.top h1{{font-size:26px;margin:0}}
+.top span{{font-size:12px;letter-spacing:.14em;color:#667085}}
+.proj{{margin-top:52px}}
+.proj h2{{font-size:20px;margin:0 0 6px}}
+.pdesc{{color:#667085;font-size:14px;line-height:1.7;margin:0 0 18px;max-width:760px}}
+.cards{{display:grid;gap:10px}}
+.card{{display:flex;align-items:center;gap:16px;padding:16px 18px;background:#fff;
+border:1px solid #e4e7ec;border-radius:10px;text-decoration:none;color:inherit}}
+.card:hover{{border-color:#d92d20;box-shadow:0 1px 2px rgba(16,24,40,.06)}}
+.no{{font-size:12px;color:#98a2b3;font-family:ui-monospace,monospace}}
+.txt{{flex:1}}.txt b{{display:block;font-size:15px}}
+.txt em{{display:block;font-style:normal;font-size:12px;color:#667085;margin-top:3px}}
+.score{{font-size:22px;font-weight:700;color:#d92d20}}
+.empty{{color:#98a2b3;font-size:13px;padding:14px 0}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top"><h1>TCL 欧洲 KOL · 视频拆解</h1><span>VIDEO TEARDOWN · 2 PROJECTS</span></div>
+{''.join(cards)}</div>
+</body>
+</html>
+"""
+    out = rdir / "index.html"
+    out.write_text(html, encoding="utf-8")
+    counts = {k: len([d for d in data if d.get("project") == k]) for k in PROJECTS}
+    print(f"汇总页 {out}：头部 {counts['head']} 条 · 中部 {counts['mid']} 条")
 
 
 def main():
@@ -329,6 +426,13 @@ def main():
 
     sc = sub.add_parser("scaffold", help="生成新报告页")
     sc.add_argument("--slug", required=True)
+    sc.add_argument("--project", default="head", choices=["head", "mid"],
+                    help="head=头部 KOL·MiniLED 教育；mid=中部 KOL·P8L vs M80H")
+    sc.add_argument("--kol", default="")
+    sc.add_argument("--market", default="")
+    sc.add_argument("--duration", default="")
+    sc.add_argument("--score", default="")
+    sc.add_argument("--no-register", action="store_true", help="只生成页面，不写进汇总清单")
     sc.add_argument("--title")
     sc.add_argument("--subtitle")
     sc.add_argument("--force", action="store_true")
@@ -340,8 +444,12 @@ def main():
     b.add_argument("--threshold", type=float, default=0.3)
     b.add_argument("--cols", type=int, default=4)
     b.add_argument("--thumb", type=int, default=320)
-    b.add_argument("--out", help="汇总表输出路径，默认 work/index.md")
+    b.add_argument("--name", help="项目名，产物落到 work/<项目名>/（建议 head-miniled / mid-p8l-m80h）")
+    b.add_argument("--out", help="汇总表输出路径，默认 work/<项目名>/index.md")
     b.set_defaults(func=cmd_batch)
+
+    ix = sub.add_parser("index", help="按两个项目生成汇总页")
+    ix.set_defaults(func=cmd_index)
 
     args = ap.parse_args()
     args.func(args)
