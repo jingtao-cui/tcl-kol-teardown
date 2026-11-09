@@ -268,5 +268,100 @@
    }
   ],
   "readout": "这条的核心产出不是「TCL 更好」，而是教会观众一个新变量：分区布局与背光控制比分区数量更重要。三条最高赞（12 / 8 / 6）全是「我以前根本不知道」型，说明教育型对比在英国受众里成立，而且能改变他们的选购检查清单。但说服力有明显天花板：一条「两台我看不出区别」加一条「99% 的人根本不在意」，说明对非功课型观众，这场对比打动不了——它服务的是已经在比价的人。品牌转换信号很硬：两位自称 25 年三星用户转向 TCL，一位在店里同时看三星/LG/TCL 后倾向 P8L。真正刺眼的负面不在技术，而在渠道与痛点：Currys 差评拿到 13 赞、店员被问就茫然；一位偏头痛观众说 Hisense 看 10 分钟就退货，要的是 43 寸不刺眼的机型——「亮度与闪烁」是这条视频没覆盖的真实需求。"
+ },
+ "chigztechreviews": {
+  "scope": "最热门排序 · 主评论 57 条（含创作者置顶投票，不含作者回复）",
+  "sentiment": {
+   "pos": 16,
+   "neu": 9,
+   "neg": 5
+  },
+  "topics": [
+   {
+    "name": "暗场对比最有价值",
+    "count": 4,
+    "note": "「暗场、黑底字幕、小高光」才是看背光的地方，比亮场演示真实"
+   },
+   {
+    "name": "控光布局被理解",
+    "count": 3,
+    "note": "「LED 数量 AND 布局都要看」——去店里实看暗场后自己得出"
+   },
+   {
+    "name": "已购用户背书",
+    "count": 3,
+    "note": "P8L 色彩鲜活、音质好到不用买 soundbar；TCL 用 3 年零故障"
+   },
+   {
+    "name": "测试覆盖不足",
+    "count": 2,
+    "note": "「没测 upscaling」「该测 Hisense」——观众在点菜"
+   },
+   {
+    "name": "型号混淆",
+    "count": 3,
+    "note": "反复问 P8L vs C6K 到底怎么选，说明产品线命名劝退"
+   },
+   {
+    "name": "偏色 / 色准质疑",
+    "count": 2,
+    "note": "偏冷、红色过饱和——少数但专业的技术挑刺"
+   },
+   {
+    "name": "产地与品牌偏见",
+    "count": 1,
+    "note": "「不接受中国产的电视」"
+   },
+   {
+    "name": "产品问题",
+    "count": 2,
+    "note": "65A400M 快速画面有 ghosting；有人问 P8L 是否停产"
+   }
+  ],
+  "quotes": [
+   {
+    "who": "@Melissasmith-i3z",
+    "likes": 13,
+    "tag": "正",
+    "text": "Finally, someone explaining Mini LED without making it sound like rocket science.",
+    "zh": "终于有人把 Mini LED 讲得不像火箭科学——最高赞是「讲人话」本身。"
+   },
+   {
+    "who": "@marwansherif6201",
+    "likes": 15,
+    "tag": "正",
+    "text": "TCL is causing sleepless nights to the likes of Samsung, LG, Sony.",
+    "zh": "TCL 让三星、LG、索尼睡不着——品牌威胁感被当成卖点。"
+   },
+   {
+    "who": "@Eric-d8e8j",
+    "likes": 10,
+    "tag": "正",
+    "text": "Been using a TCL in my living room for almost 3 years now and zero issues.",
+    "zh": "客厅 TCL 用了近三年零故障，画质仍远超价格带。"
+   },
+   {
+    "who": "@davidmarshall4922",
+    "likes": 0,
+    "tag": "中",
+    "text": "The M80H does show way more shadow detail… not sure what's the value of deeper blacks if details are lost in the shadows.",
+    "zh": "M80H 暗部细节更多，黑得下去但细节丢了有什么意义——最专业的一条反向观察。"
+   },
+   {
+    "who": "@NeonVisual",
+    "likes": 6,
+    "tag": "负",
+    "text": "Looks like it's a little on the cooler side and over boosting red.",
+    "zh": "色温偏冷、红色过饱和——技术型观众的色准挑刺。"
+   },
+   {
+    "who": "@jrchmgn.",
+    "likes": 0,
+    "tag": "中",
+    "text": "Is it true that tcl phase out the p8l model? we bought the 65A400m and it's having a ghosting when the picture is moving fast.",
+    "zh": "两个真实售前问题：P8L 是否停产、65A400M 快速画面拖影。"
+   }
+  ],
+  "readout": "这条是八条里评论区最「干净」的一条：57 条评论几乎全正面，创作者还用置顶投票（P8L / M80H / 都行 / 都不选）主动收口，15 赞。有效信号是「讲人话」——最高赞 13 的那条是「终于有人把 Mini LED 讲得不像火箭科学」，比任何画质夸奖都直接。专业挑刺只有两条但值得记：M80H 暗部细节更多，「黑得下去但细节丢了有什么意义」；以及偏冷、红色过饱和的色彩倾向。另外两类留言暴露真实售前摩擦：三个不同的人反复问 P8L 和 C6K 怎么选，说明产品线命名在劝退；还有人问 P8L 是不是停产、65A400M 快速画面拖影——这是要产品端回答的问题，不是内容端。"
  }
 }
