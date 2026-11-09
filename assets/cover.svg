@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="360" viewBox="0 0 640 360">
+<rect width="100%" height="100%" fill="#E9ECF1"/>
+<rect x="1" y="1" width="638" height="358" fill="none" stroke="#D0D5DD" stroke-width="2"/>
+<text x="320.0" y="174.0" font-family="-apple-system,Segoe UI,PingFang SC,sans-serif" font-size="20" font-weight="700" fill="#98A2B3" text-anchor="middle">COVER · 视频封面</text>
+<text x="320.0" y="202.0" font-family="SF Mono,Menlo,monospace" font-size="12" fill="#B5BDC9" text-anchor="middle">replace with cover.jpg</text>
+</svg>
